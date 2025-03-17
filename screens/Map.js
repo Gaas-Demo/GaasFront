@@ -1,6 +1,6 @@
 import MapView, { PROVIDER_GOOGLE, Callout, Marker } from 'react-native-maps';
 import { useState, useEffect } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, Linking, TouchableOpacity } from 'react-native';
 import * as Location from 'expo-location';
 import { GOOGLE_MAPS_API_KEY } from "@env";
 
@@ -55,15 +55,16 @@ export default function Map() {
             <Marker
               coordinate={location}
               title="You are here"
-              description="Your current location"
+              description="Your location"
             />
           )}
           {locationGarage && (
-            <Marker
-              coordinate={locationGarage}
-              title="Porsche Garage Oulu"
-              description={garageInfo}
-            />
+          <Marker
+            coordinate={locationGarage}
+            title="Porsche Garage Oulu"
+            description="Downtown Parking Garage, XYZ Leasing"
+            pinColor="blue"
+          />     
           )}
         </MapView>
     );
