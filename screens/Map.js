@@ -1,6 +1,6 @@
-import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
+import MapView, { PROVIDER_GOOGLE, Callout, Marker } from 'react-native-maps';
 import { useState, useEffect } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import * as Location from 'expo-location';
 import { GOOGLE_MAPS_API_KEY } from "@env";
 
@@ -11,6 +11,19 @@ export default function Map() {
         latitudeDelta: 0.0922,
         longitudeDelta: 0.0421
     });
+
+    const [locationGarage, setLocationGarage] = useState({
+      latitude: 65.0900,
+      longitude: 25.4700,
+      latitudeDelta: 0.0922,
+      longitudeDelta: 0.0421
+    });
+
+    const garageInfo = {
+      name: "Downtown Parking Garage",
+      leasingCompany: "XYZ Leasing",
+      link: "https://example.com/garage-details"
+    };
 
     useEffect(() => {
         const getUserPosition = async () => {
@@ -45,6 +58,13 @@ export default function Map() {
               description="Your current location"
             />
           )}
+          {locationGarage && (
+            <Marker
+              coordinate={locationGarage}
+              title="Porsche Garage Oulu"
+              description={garageInfo}
+            />
+          )}
         </MapView>
     );
   }
@@ -56,5 +76,9 @@ export default function Map() {
     map: {
       width: '100%',
       height: '100%',
+    },
+    infobox: {
+      width: '100%',
+      height: 100,
     },
   });
