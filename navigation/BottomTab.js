@@ -1,7 +1,6 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Register from '../screens/Register';
-import Login from '../screens/Login';
 import { DrawerToggleButton } from '@react-navigation/drawer';
+import PlaceholderScreen from '../screens/Placeholder';
 
 const Tab = createBottomTabNavigator();
 
@@ -15,8 +14,8 @@ export default function BottomTabNavigator() {
                     <DrawerToggleButton />
                 )
             }}>
-            <Tab.Screen name="Register" component={Register} /> {/* Register and Login here as placeholders. Feel free to replace with your own component */}
-            <Tab.Screen name="Login" component={Login} />
+            <Tab.Screen name="Placeholder1" component={PlaceholderScreen} />
+            <Tab.Screen name="Placeholder2" component={PlaceholderScreen} />
             {/* <Tab.Screen name="Page name here" component={Component name here} /> */}
         </Tab.Navigator>
     );
