@@ -4,12 +4,22 @@ import { useState } from 'react';
 import { useAuth } from '../context/AuthProvider';
 
 export default function Login() {
-    const { isLoggedIn, login, logout } = useAuth();
+    const { isLoggedIn, login, logout, user } = useAuth();
     const[email, setEmail] = useState('');
     const[password, setPassword] = useState('');
     const[loading, setLoading] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
 
+    //testing if context works properly (token has to be sent with every HTTPS request and checked in backend)
+    const giveToken = async () => {
+        try {
+            const token = await user.getIdToken(true);
+            console.log("Firebase Token:", token);
+        } catch (error) {
+            console.error("Error fetching ID Token:", error.message);
+            setErrorMessage("Error fetching ID token");
+        }
+    };
 
     return (
         <View style={styles.container}>
@@ -33,7 +43,7 @@ export default function Login() {
             </Button>
 
             <Button
-                title='Forgot password'>
+                title='Forgot password' onPress={giveToken}>
             </Button>
 
             <Text>
