@@ -93,9 +93,41 @@ export default function Map() {
               description="Your location"
             />
           )}
-          {locationGarage && (
+          {locationGarage1 && (
           <Marker
-            coordinate={locationGarage}
+            coordinate={locationGarage1}
+            title="Porsche Garage Oulu"
+            description="Downtown Parking Garage, XYZ Leasing"
+            pinColor="blue"
+          />    
+          )}
+          {locationGarage2 && (
+          <Marker
+            coordinate={locationGarage2}
+            title="Porsche Garage Oulu"
+            description="Downtown Parking Garage, XYZ Leasing"
+            pinColor="blue"
+          />    
+          )}
+          {locationGarage3 && (
+          <Marker
+            coordinate={locationGarage3}
+            title="Porsche Garage Oulu"
+            description="Downtown Parking Garage, XYZ Leasing"
+            pinColor="blue"
+          />    
+          )}
+          {locationGarage4 && (
+          <Marker
+            coordinate={locationGarage4}
+            title="Porsche Garage Oulu"
+            description="Downtown Parking Garage, XYZ Leasing"
+            pinColor="blue"
+          />    
+          )}
+          {locationGarage5 && (
+          <Marker
+            coordinate={locationGarage5}
             title="Porsche Garage Oulu"
             description="Downtown Parking Garage, XYZ Leasing"
             pinColor="blue"
