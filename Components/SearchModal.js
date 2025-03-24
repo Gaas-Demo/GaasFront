@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { StyleSheet, View, Text } from 'react-native';
 import { Modal, TextInput } from 'react-native-paper';
-import { SearchModel, SearchYear, SearchColor, SearchModelYearColor } from '../Functions/SearchFunctions';
+import { SearchModelYearColor } from '../Functions/SearchFunctions';
 import carsData from '../Testi/testi';
+import { Chip } from 'react-native-paper';
 
 
 const SearchModal = ({ visible, toggleModal, Search, data }) => {
@@ -48,6 +49,7 @@ const SearchModal = ({ visible, toggleModal, Search, data }) => {
                             toggleModal()
                         }}
                     />
+                    <Chip onPress={() => console.log('Pressed')}>Example Chip</Chip>
                 </View>
             </View>
         </Modal>

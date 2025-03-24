@@ -8,4 +8,7 @@ const carsData = [
   { id: 7, Type: 'Ford', model: 'asd', year: 2022, color: 'Black', Wifi: true  },
   { id: 8, Type: 'Chevrolet', model: 'Camaro', year: 2023, color: 'Yellow' ,Wifi: false},
 ];
+const carData =[
+  { id: 5, Type: 'Porsche', model: 'Panamera', year: 2022, color: 'Grey', Wifi: true, Moottoritilavuus: '2,9', Vaihteisto: '8-vaihteinen Porsche Doppelkupplung (PDK)'  },
+]
 export default carsData;

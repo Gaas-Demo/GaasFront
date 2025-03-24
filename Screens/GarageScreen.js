@@ -1,8 +1,8 @@
 import React from 'react'
 import GarageCarSearch from '../Components/GarageCarSearch'
-import { View, Text, SectionList, FlatList, ScrollView } from 'react-native'
+import { View,  FlatList, ScrollView } from 'react-native'
 import { StyleSheet } from 'react-native'
-import { useState, useRef, useEffect } from 'react'
+import { useState,  useEffect } from 'react'
 import SearchModal from '../Components/SearchModal'
 import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
 import CarSmallCard from '../Components/CarSmallCard'
@@ -59,7 +59,7 @@ export default function GarageScreen() {
   )
 }
 
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'row',

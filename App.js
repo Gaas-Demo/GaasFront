@@ -1,12 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import GarageScreen from './Screens/GarageScreen';
+import CarInformationScreen from './Screens/CarInformationScreen';
 
 export default function App() {
   return (
 
-      <GarageScreen/>
-
+   //   <GarageScreen/>
+    <CarInformationScreen/>
   );
 }
 
