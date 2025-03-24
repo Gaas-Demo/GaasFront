@@ -1,20 +1,22 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
+import { AuthProvider } from './context/AuthProvider';
 import DrawerNavigator from './navigation/Drawer';
-import GarageScreen from './Screens/GarageScreen';
-import CarInformationScreen from './Screens/CarInformationScreen';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
+import Homepage from './Screens/HomepageComponent';
+import Map from './Screens/Map';
 
 export default function App() {
 
   
   return (
-    /* Go to BottomTab.js or Drawer.js to add your screens to the navigation */
-    <NavigationContainer>
-      <DrawerNavigator />
-    </NavigationContainer>
+    <AuthProvider>
+      <SafeAreaView style={{ flex: 1 }}>
+        <NavigationContainer>
+          <DrawerNavigator />
+        </NavigationContainer>
+      </SafeAreaView>
+    </AuthProvider>
   );
 }
 
