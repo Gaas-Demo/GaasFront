@@ -49,7 +49,6 @@ const SearchModal = ({ visible, toggleModal, Search, data }) => {
                             toggleModal()
                         }}
                     />
-                    <Chip onPress={() => console.log('Pressed')}>Example Chip</Chip>
                 </View>
             </View>
         </Modal>

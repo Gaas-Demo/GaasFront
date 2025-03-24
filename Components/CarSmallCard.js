@@ -5,12 +5,9 @@ import CarInformationScreen from '../Screens/CarInformationScreen'
 
 
 
-export default function CarSmallCard({item}) {
+export default function CarSmallCard({item, navigation}) {
 
     
-  const moreInfo = () => {
-    console.log("nuolta painettu",item)
-  }
 
   return (
     <Card style={styles.cardcontainer}>
@@ -21,7 +18,7 @@ export default function CarSmallCard({item}) {
       title={item.model}
       subtitleNumberOfLines={3}
       subtitle={item.year}
-      right={(props) => <IconButton {...props}backgroundColor='grey'icon="chevron-right" onPress={()=> CarInformationScreen(item)} />}
+      right={(props) => <IconButton {...props}backgroundColor='grey'icon="chevron-right" onPress={()=> navigation.navigate('CarInformationScreen',{item})} />}
       />
     </Card>
 

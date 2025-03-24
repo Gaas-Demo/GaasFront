@@ -11,7 +11,7 @@ import carsData from '../Testi/testi'
 
 
 
-export default function GarageScreen() {
+export default function GarageScreen({navigation}) {
   const numColumns1 = 2;
   const [modalVisible, setModalVisible] = useState(false);
   const [SearchData, setSearchData] = useState([]);
@@ -44,7 +44,7 @@ export default function GarageScreen() {
           keyExtractor={(item) => item.id.toString()}
           renderItem={({ item }) => (
             <View style={styles.column}>
-            <CarSmallCard item={item} />
+            <CarSmallCard item={item} navigation={navigation}/>
             </View>
           )}
         />

@@ -4,9 +4,9 @@ import { ScrollView, StyleSheet, Text, View } from 'react-native'
 import { useState } from 'react'
 import CarImage from './CarImage'
 
-export default function CarInfo() {
+export default function CarInfo({item}) {
 
-
+console.log("carInfo", item)
 
     return (
         <ScrollView>
@@ -14,7 +14,7 @@ export default function CarInfo() {
                 <Card mode='elevated'
                     elevation={5}
                 >
-                    <CarMotor />
+                    <CarMotor item={item}/>
                 </Card>
                 <View style={styles.container}>
                     <Card>
@@ -37,9 +37,10 @@ export default function CarInfo() {
     )
 }
 
-function CarMotor() {
+function CarMotor({item}) {
     return (
         <View>
+            <Text>{item.model} {item.Type} {item.year} {item.color}</Text>
             <Text>Moottoritilavuus (l): 2,9</Text>
             <Text>Automaattivaihteisto:
                 8-vaihteinen Porsche Doppelkupplung (PDK)</Text>

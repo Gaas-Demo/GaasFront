@@ -6,19 +6,20 @@ import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
 import CarInfo from '../Components/CarInfo'
 
 
-export default function CarInformationScreen() {
-    
+export default function CarInformationScreen({ route }) {
+  const { item } = route.params;
+  console.log("CarInformationScreen", item)
 
   return (
-    
+
     <SafeAreaProvider>
       <SafeAreaView style={styles.container}>
-      <ScrollView>
-      <CarImage/>
-      <CarInfo/>
-      </ScrollView>
+        <ScrollView>
+          <CarImage />
+          <CarInfo item={item}/>
+        </ScrollView>
       </SafeAreaView>
-        </SafeAreaProvider>
+    </SafeAreaProvider>
   )
 }
 
