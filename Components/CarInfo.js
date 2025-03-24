@@ -8,6 +8,7 @@ export default function CarInfo({item}) {
 
 console.log("carInfo", item)
 
+const image2 = require('../Testi/testi2.jpg')
     return (
         <ScrollView>
             <View style={styles.container}>
@@ -23,7 +24,7 @@ console.log("carInfo", item)
                 </View>
                 <View style={styles.container}>
                     <Card>
-                        <CarImage />
+                        <CarImage image={image2}/>
                     </Card>
                 </View>
                 <View style={styles.container}>

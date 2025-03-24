@@ -9,13 +9,13 @@ import CarInfo from '../Components/CarInfo'
 export default function CarInformationScreen({ route }) {
   const { item } = route.params;
   console.log("CarInformationScreen", item)
-
+  const image = require('../Testi/auto.png')
   return (
 
     <SafeAreaProvider>
       <SafeAreaView style={styles.container}>
         <ScrollView>
-          <CarImage />
+          <CarImage image={image}/>
           <CarInfo item={item}/>
         </ScrollView>
       </SafeAreaView>
