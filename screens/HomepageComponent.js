@@ -5,7 +5,7 @@ const Homepage = () => {
   const [rentedCar, setRentedCar] = useState(null);
   const [loading, setLoading] = useState(true);
   const [modalVisible, setModalVisible] = useState(false);
-  const [message, setMessage] = useState(""); // To handle user input in the chat
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     setTimeout(() => {
@@ -14,7 +14,7 @@ const Homepage = () => {
         model: "Porsche 911 Turbo S",
         licensePlate: "XYZ 987",
         rentalPeriod: "3 days",
-        image: require("./assets/CarImage.jpg"),
+        image: require("../assets/CarImage.jpg"),
       });
       setLoading(false);
     }, 1000);
@@ -54,7 +54,6 @@ const Homepage = () => {
         <Text style={styles.licensePlate}>License: {rentedCar.licensePlate}</Text>
         <Text style={styles.rentalPeriod}>Rental Period: {rentedCar.rentalPeriod}</Text>
 
-        {/* Feikki nappeja */}
         <TouchableOpacity style={styles.helpButton} onPress={openChatModal}>
           <Text style={styles.buttonText}>Ask Help</Text>
         </TouchableOpacity>
@@ -64,7 +63,6 @@ const Homepage = () => {
         </TouchableOpacity>
       </View>
 
-      {/* Modal for Customer Chat */}
       <Modal
         animationType="slide"
         transparent={true}
@@ -78,7 +76,6 @@ const Homepage = () => {
               <View style={styles.messageBubble}>
                 <Text style={styles.messageText}>Hi! How can I assist you today?</Text>
               </View>
-              {/* Add more messages here as needed */}
             </ScrollView>
             <View style={styles.inputContainer}>
               <TextInput
@@ -110,6 +107,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#f8f9fa",
   },
   contractCard: {
+    marginTop: 50,
     width: "90%",
     minHeight: 380,
     backgroundColor: "#ffffff",
@@ -178,12 +176,11 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
 
-  // Modal styles for chat window
   modalBackground: {
     flex: 1,
     justifyContent: "flex-end",
     alignItems: "center",
-    backgroundColor: "rgba(0, 0, 0, 0.5)", // Semi-transparent background
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
   },
   chatWindow: {
     width: "100%",
