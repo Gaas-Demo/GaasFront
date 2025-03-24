@@ -1,12 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import DrawerNavigator from './navigation/Drawer';
+
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    /* Go to BottomTab.js or Drawer.js to add your screens to the navigation */
+    <NavigationContainer>
+      <DrawerNavigator />
+    </NavigationContainer>
   );
 }
 
