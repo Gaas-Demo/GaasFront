@@ -12,9 +12,44 @@ export default function Map() {
         longitudeDelta: 0.0421
     });
 
-    const [locationGarage, setLocationGarage] = useState({
+    const [locationGarage1, setLocationGarage1] = useState({
       latitude: 65.0900,
       longitude: 25.4700,
+      latitudeDelta: 0.0922,
+      longitudeDelta: 0.0421
+    });
+
+    const [locationGarage2, setLocationGarage2] = useState({
+      latitude: 65.1900,
+      longitude: 25.5700,
+      latitudeDelta: 0.0922,
+      longitudeDelta: 0.0421
+    });
+
+    const [locationGarage3, setLocationGarage3] = useState({
+      latitude: 65.2900,
+      longitude: 25.6700,
+      latitudeDelta: 0.0922,
+      longitudeDelta: 0.0421
+    });
+
+    const [locationGarage4, setLocationGarage4] = useState({
+      latitude: 65.3900,
+      longitude: 25.7700,
+      latitudeDelta: 0.0922,
+      longitudeDelta: 0.0421
+    });
+
+    const [locationGarage5, setLocationGarage5] = useState({
+      latitude: 65.4900,
+      longitude: 25.8700,
+      latitudeDelta: 0.0922,
+      longitudeDelta: 0.0421
+    });
+
+    const [locationGarage6, setLocationGarage6] = useState({
+      latitude: 65.5900,
+      longitude: 25.9700,
       latitudeDelta: 0.0922,
       longitudeDelta: 0.0421
     });
@@ -64,7 +99,7 @@ export default function Map() {
             title="Porsche Garage Oulu"
             description="Downtown Parking Garage, XYZ Leasing"
             pinColor="blue"
-          />     
+          />    
           )}
         </MapView>
     );
