@@ -7,6 +7,8 @@ import Homepage from './screens/HomepageComponent';
 import Map from './screens/Map';
 
 export default function App() {
+
+  
   return (
     <AuthProvider>
       <SafeAreaView style={{ flex: 1 }}>

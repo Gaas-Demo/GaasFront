@@ -2,6 +2,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { DrawerToggleButton } from '@react-navigation/drawer';
 import { Icon } from 'react-native-paper';
 import PlaceholderScreen from '../screens/Placeholder';
+import { StackScreen1 } from './Stack';
 import Map from '../screens/Map';
 import Homepage from '../screens/HomepageComponent';
 
