@@ -9,9 +9,7 @@ export default function CarImage({image}) {
     elevation={5}
     resizeMode='contain'
     >
-    <Card.Cover source={image}
-
-    />
+      <Card.Cover source={image} style={styles.modelImage2}/>
     </Card>
   )
 }
@@ -19,5 +17,8 @@ export default function CarImage({image}) {
 
 
 const styles = StyleSheet.create({
-
+  modelImage2: {
+    borderTopLeftRadius: 0,
+    borderBottomLeftRadius: 0,
+}
 })

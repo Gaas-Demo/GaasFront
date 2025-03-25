@@ -49,7 +49,7 @@ export default function GarageScreen({navigation}) {
           )}
         />
 
-        <GarageCarSearch onPress={toggleModal} modalVisible={modalVisible} />
+        <GarageCarSearch onPress={toggleModal} modalVisible={modalVisible}/>
         <SearchModal visible={modalVisible} toggleModal={toggleModal} Search={Search} data={carsData} />
        
       </SafeAreaView>
@@ -74,5 +74,4 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 5,
     paddingVertical: 5
   },
-
 });
