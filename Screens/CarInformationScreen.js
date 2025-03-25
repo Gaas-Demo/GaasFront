@@ -1,9 +1,9 @@
 
-import CarImage from '../Components/CarImage'
+import CarImage from '../components/CarImage'
 import { ScrollView, StyleSheet } from 'react-native'
 import React from 'react'
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
-import CarInfo from '../Components/CarInfo'
+import CarInfo from '../components/CarInfo'
 
 
 export default function CarInformationScreen({ route }) {

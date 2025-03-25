@@ -1,7 +1,7 @@
 import React from 'react'
 import { Avatar, Card, IconButton } from 'react-native-paper'
 import { StyleSheet } from 'react-native'
-import CarInformationScreen from '../Screens/CarInformationScreen'
+import CarInformationScreen from '../screens/CarInformationScreen'
 
 
 

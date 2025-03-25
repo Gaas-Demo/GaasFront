@@ -1,11 +1,11 @@
 import React from 'react'
-import GarageCarSearch from '../Components/GarageCarSearch'
+import GarageCarSearch from '../components/GarageCarSearch'
 import { View,  FlatList, ScrollView } from 'react-native'
 import { StyleSheet } from 'react-native'
 import { useState,  useEffect } from 'react'
-import SearchModal from '../Components/SearchModal'
+import SearchModal from '../components/SearchModal'
 import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
-import CarSmallCard from '../Components/CarSmallCard'
+import CarSmallCard from '../components/CarSmallCard'
 import carsData from '../Testi/testi'
 
 

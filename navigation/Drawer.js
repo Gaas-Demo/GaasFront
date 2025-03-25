@@ -1,6 +1,6 @@
 import React from 'react';
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList, DrawerItem } from '@react-navigation/drawer';
-import Settings from '../Screens/Settings';
+import Settings from '../screens/Settings';
 import { Image, Text } from 'react-native';
 import BottomTabNavigator from './BottomTab';
 

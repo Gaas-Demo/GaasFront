@@ -1,10 +1,8 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { DrawerToggleButton } from '@react-navigation/drawer';
-import PlaceholderScreen from '../Screens/Placeholder';
+import PlaceholderScreen from '../screens/Placeholder';
 import { StackScreen1 } from './Stack';
-import GarageScreen from '../Screens/GarageScreen';
-import PlaceholderScreen from '../Screens/Placeholder';
-import Map from '../Screens/Map';
+import Map from '../screens/Map';
 
 const Tab = createBottomTabNavigator();
 
