@@ -20,36 +20,36 @@ export default function Map() {
     });
 
     const [locationGarage2, setLocationGarage2] = useState({
-      latitude: 65.1900,
-      longitude: 25.5700,
+      latitude: 65.0070,
+      longitude: 25.5010,
       latitudeDelta: 0.0922,
       longitudeDelta: 0.0421
     });
 
     const [locationGarage3, setLocationGarage3] = useState({
-      latitude: 65.2900,
-      longitude: 25.6700,
+      latitude: 60.1900,
+      longitude: 24.9300,
       latitudeDelta: 0.0922,
       longitudeDelta: 0.0421
     });
 
     const [locationGarage4, setLocationGarage4] = useState({
-      latitude: 65.3900,
-      longitude: 25.7700,
+      latitude: 61.4900,
+      longitude: 23.7740,
       latitudeDelta: 0.0922,
       longitudeDelta: 0.0421
     });
 
     const [locationGarage5, setLocationGarage5] = useState({
-      latitude: 65.4900,
-      longitude: 25.8700,
+      latitude: 51.5010,
+      longitude: -0.1400,
       latitudeDelta: 0.0922,
       longitudeDelta: 0.0421
     });
 
     const [locationGarage6, setLocationGarage6] = useState({
-      latitude: 65.5900,
-      longitude: 25.9700,
+      latitude: 52.5180,
+      longitude: 13.4300,
       latitudeDelta: 0.0922,
       longitudeDelta: 0.0421
     });
@@ -112,7 +112,7 @@ export default function Map() {
           {locationGarage3 && (
           <Marker
             coordinate={locationGarage3}
-            title="Porsche Garage Oulu"
+            title="Porsche Garage Helsinki"
             description="Downtown Parking Garage, XYZ Leasing"
             pinColor="blue"
           />    
@@ -120,7 +120,7 @@ export default function Map() {
           {locationGarage4 && (
           <Marker
             coordinate={locationGarage4}
-            title="Porsche Garage Oulu"
+            title="Porsche Garage Tampere"
             description="Downtown Parking Garage, XYZ Leasing"
             pinColor="blue"
           />    
@@ -128,7 +128,15 @@ export default function Map() {
           {locationGarage5 && (
           <Marker
             coordinate={locationGarage5}
-            title="Porsche Garage Oulu"
+            title="Porsche Garage Lontoo"
+            description="Downtown Parking Garage, XYZ Leasing"
+            pinColor="blue"
+          />    
+          )}
+          {locationGarage6 && (
+          <Marker
+            coordinate={locationGarage6}
+            title="Porsche Garage Berliini"
             description="Downtown Parking Garage, XYZ Leasing"
             pinColor="blue"
           />    
