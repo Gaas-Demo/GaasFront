@@ -3,6 +3,7 @@ import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList, DrawerI
 import Settings from '../screens/Settings';
 import { Image, Text } from 'react-native';
 import BottomTabNavigator from './BottomTab';
+import Homepage from '../screens/HomepageComponent';
 
 
 const Drawer = createDrawerNavigator();
