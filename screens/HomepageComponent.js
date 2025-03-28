@@ -2,25 +2,41 @@ import React, { useState, useEffect } from "react";
 import { View, Image, StyleSheet, ActivityIndicator, Modal, ScrollView, TouchableOpacity } from "react-native";
 import { Button, Text, TextInput } from 'react-native-paper';
 
-export default function Homepage() {
+import { rentedCar2 } from "../Testi/testi";
+
+
+
+export default function Homepage({navigation}) {
   const [rentedCar, setRentedCar] = useState(null);
   const [loading, setLoading] = useState(true);
   const [modalVisible, setModalVisible] = useState(false);
   const [message, setMessage] = useState("");
-  const [showCar, setShowCar] = useState(true);
+  const [showCar, setShowCar] = useState(false);
+  
 
   useEffect(() => {
-    setTimeout(() => {
-      setRentedCar({
-        id: "123",
-        model: "Porsche 911 Turbo S",
-        licensePlate: "XYZ 987",
-        rentalPeriod: "3 days",
-        image: require("../assets/CarImage.jpg"),
-      });
+    const focusListener = navigation.addListener('focus', () => {
+    //setTimeout(() => {
+      
+      console.log("j",rentedCar2)
+
+      if (rentedCar2 != null)
+      {
+        setRentedCar({
+          id: rentedCar2.id,
+          model: rentedCar2.model,
+          licensePlate: "XYZ 987",
+          rentalPeriod: "3 days",
+          image: require("../assets/CarImage.jpg"),
+        });
+        setShowCar(true)
+      }
+    
       setLoading(false);
-    }, 1000);
-  }, []);
+      
+   // }, 1000);
+    }); return focusListener
+  });
 
   const openChatModal = () => setModalVisible(true);
   const closeChatModal = () => {
