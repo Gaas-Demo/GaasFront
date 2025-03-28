@@ -4,6 +4,7 @@ import Settings from '../screens/Settings';
 import { Image, Text, StyleSheet, View } from 'react-native';
 import { Icon } from 'react-native-paper';
 import BottomTabNavigator from './BottomTab';
+import Homepage from '../screens/HomepageComponent';
 
 
 

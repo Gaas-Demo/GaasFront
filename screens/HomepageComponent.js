@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, Image, StyleSheet, ActivityIndicator, TouchableOpacity, Modal, TextInput, ScrollView } from "react-native";
+import { View, Image, StyleSheet, ActivityIndicator, Modal, ScrollView, TouchableOpacity } from "react-native";
+import { Button, Text, TextInput } from 'react-native-paper';
 
-const Homepage = () => {
+export default function Homepage() {
   const [rentedCar, setRentedCar] = useState(null);
   const [loading, setLoading] = useState(true);
   const [modalVisible, setModalVisible] = useState(false);
   const [message, setMessage] = useState("");
+  const [showCar, setShowCar] = useState(true);
 
   useEffect(() => {
     setTimeout(() => {
@@ -20,12 +22,14 @@ const Homepage = () => {
     }, 1000);
   }, []);
 
-  const openChatModal = () => {
-    setModalVisible(true);
-  };
-
+  const openChatModal = () => setModalVisible(true);
   const closeChatModal = () => {
     setModalVisible(false);
+    setMessage("");
+  };
+
+  const sendMessage = () => {
+    setMessage("");
   };
 
   if (loading) {
@@ -37,31 +41,48 @@ const Homepage = () => {
     );
   }
 
-  if (!rentedCar) {
-    return (
-      <View style={styles.centered}>
-        <Text>No car currently rented</Text>
-      </View>
-    );
-  }
-
   return (
     <View style={styles.container}>
-      <View style={styles.contractCard}>
-        <Text style={styles.sectionTitle}>Current Contract</Text>
-        <Image source={rentedCar.image} style={styles.carImage} />
-        <Text style={styles.carModel}>{rentedCar.model}</Text>
-        <Text style={styles.licensePlate}>License: {rentedCar.licensePlate}</Text>
-        <Text style={styles.rentalPeriod}>Rental Period: {rentedCar.rentalPeriod}</Text>
-
-        <TouchableOpacity style={styles.helpButton} onPress={openChatModal}>
-          <Text style={styles.buttonText}>Ask Help</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.endButton}>
-          <Text style={styles.endButtonText}>End Contract</Text>
-        </TouchableOpacity>
-      </View>
+      {showCar ? (
+        <>
+          <Text style={styles.headline} variant="titleLarge">
+            Current Contract
+          </Text>
+      
+          <Image source={rentedCar.image} style={styles.carImage} />
+          <Text style={styles.text} variant="bodyLarge">{rentedCar.model}</Text>
+          <Text style={styles.text} variant="bodyLarge">License: {rentedCar.licensePlate}</Text>
+          <Text style={styles.text} variant="bodyLarge">Rental Period: {rentedCar.rentalPeriod}</Text>
+      
+          <View style={styles.fuelContainer}>
+            <Text style={styles.fuelLabel}>Fuel Level:</Text>
+            <View style={styles.fuelBar}>
+              <View style={[styles.fuelFill, { width: "80%" }]} />
+            </View>
+            <Text style={styles.fuelPercentage}>80%</Text>
+          </View>
+      
+          <Button style={styles.button} mode="contained" onPress={openChatModal}>
+            Ask Help
+          </Button>
+      
+          <Button style={styles.button} mode="contained">
+            End Contract
+          </Button>
+        </>
+      ) : (
+        <>
+          <Text style={styles.headline}>Welcome to your Garage in a pocket!</Text>
+          <Text style={styles.text}>Please select a car to continue.</Text>
+          {/*<Button style={styles.button} mode="contained" onPress={() => setShowCar(true)}>
+            Select a Car
+          </Button>*/}
+        </>
+      )}
+      
+      <Button style={styles.button} mode="contained" onPress={() => setShowCar(!showCar)}>
+        Button to demo both versions of the homepage
+      </Button>
 
       <Modal
         animationType="slide"
@@ -84,7 +105,7 @@ const Homepage = () => {
                 value={message}
                 onChangeText={setMessage}
               />
-              <TouchableOpacity style={styles.sendButton}>
+              <TouchableOpacity style={styles.sendButton} onPress={sendMessage}>
                 <Text style={styles.sendButtonText}>Send</Text>
               </TouchableOpacity>
             </View>
@@ -125,9 +146,12 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 22,
+  headline: {
+    marginBottom: 20,
     fontWeight: "bold",
-    marginBottom: 10,
-    color: "#333",
+  },
+  text: {
+    marginBottom: 20,
   },
   carImage: {
     width: "100%",
@@ -135,51 +159,10 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginBottom: 15,
   },
-  carModel: {
-    fontSize: 18,
-    fontWeight: "bold",
-    textAlign: "left",
-    color: "#222",
-    marginBottom: 5,
-  },
-  licensePlate: {
-    fontSize: 16,
-    color: "#555",
-    textAlign: "left",
-    marginBottom: 5,
-  },
-  rentalPeriod: {
-    fontSize: 16,
-    color: "#777",
-    textAlign: "left",
-  },
-  helpButton: {
-    marginTop: 10,
-    paddingVertical: 12,
+  button: {
+    marginBottom: 10,
     width: "100%",
-    backgroundColor: "#007BFF",
-    borderRadius: 8,
-    alignItems: "center",
   },
-  buttonText: {
-    color: "#fff",
-    fontSize: 16,
-    fontWeight: "bold",
-  },
-  endButton: {
-    marginTop: 10,
-    paddingVertical: 12,
-    width: "100%",
-    backgroundColor: "#DC3545",
-    borderRadius: 8,
-    alignItems: "center",
-  },
-  endButtonText: {
-    color: "#fff",
-    fontSize: 16,
-    fontWeight: "bold",
-  },
-
   modalBackground: {
     flex: 1,
     justifyContent: "flex-end",
@@ -193,6 +176,7 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     minHeight: 300,
+    paddingBottom: 20,
   },
   chatHeader: {
     fontSize: 18,
@@ -210,10 +194,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#f1f1f1",
     borderRadius: 15,
   },
-  messageText: {
-    fontSize: 16,
-    color: "#333",
-  },
   inputContainer: {
     flexDirection: "row",
     alignItems: "center",
@@ -225,28 +205,34 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     marginRight: 10,
     fontSize: 16,
+    minHeight: 40,
   },
-  sendButton: {
-    backgroundColor: "#007BFF",
-    padding: 10,
-    borderRadius: 15,
-  },
-  sendButtonText: {
-    color: "#fff",
-    fontSize: 16,
-  },
-  closeButton: {
-    marginTop: 15,
-    paddingVertical: 12,
-    backgroundColor: "#DC3545",
-    borderRadius: 8,
+  
+  fuelContainer: {
+    width: "100%",
     alignItems: "center",
+    marginBottom: 15,
   },
-  closeButtonText: {
-    color: "#fff",
+  fuelLabel: {
     fontSize: 16,
     fontWeight: "bold",
+    marginBottom: 5,
+  },
+  fuelBar: {
+    width: "100%",
+    height: 15,
+    backgroundColor: "#ddd",
+    borderRadius: 10,
+    overflow: "hidden",
+  },
+  fuelFill: {
+    height: "100%",
+    width: "80%",
+    backgroundColor: "#28a745",
+  },
+  fuelPercentage: {
+    fontSize: 14,
+    color: "#333",
+    marginTop: 5,
   },
 });
-
-export default Homepage;
