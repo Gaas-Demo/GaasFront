@@ -62,7 +62,7 @@ export default function Homepage() {
             <Text style={styles.fuelPercentage}>80%</Text>
           </View>
       
-          <Button style={styles.button} mode="contained" onPress={openChatModal}>
+          <Button style={styles.buttonAskHelp} mode="contained" onPress={openChatModal}>
             Ask Help
           </Button>
       
@@ -145,7 +145,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   sectionTitle: {
-    fontSize: 22,
+    fontSize: 22
+  },
   headline: {
     marginBottom: 20,
     fontWeight: "bold",
@@ -159,9 +160,21 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginBottom: 15,
   },
+  buttonAskHelp: {
+    width: "95%",
+    marginTop: 15,
+    paddingVertical: 7,
+    backgroundColor: "#007BFF",
+    borderRadius: 8,
+    alignItems: "center",
+  },
   button: {
-    marginBottom: 10,
-    width: "100%",
+    width: "95%",
+    marginTop: 15,
+    paddingVertical: 7,
+    backgroundColor: "#DC3545",
+    borderRadius: 8,
+    alignItems: "center",
   },
   modalBackground: {
     flex: 1,
@@ -207,7 +220,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     minHeight: 40,
   },
-  
   fuelContainer: {
     width: "100%",
     alignItems: "center",
