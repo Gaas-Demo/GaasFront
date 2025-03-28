@@ -1,3 +1,5 @@
+
+
 const carsData = [
   { id: 1, Type: 'Suv', model: 'Corolla', year: "2021", color: 'Red', Wifi: true},
   { id: 2, Type: 'Sedan', model: 'Civic', year: "2020", color: 'Blue',Wifi: false},
@@ -10,5 +12,15 @@ const carsData = [
 ];
 const carData =[
   { id: 5, Type: 'Porsche', model: 'Panamera', year: 2022, color: 'Grey', Wifi: true, Moottoritilavuus: '2,9', Vaihteisto: '8-vaihteinen Porsche Doppelkupplung (PDK)'  },
-]
+];
+
+export let rentedCar2 = null;
+
+export const updateRentedCar = (item) => {
+  console.log("je1", item)
+    rentedCar2 = item; 
+    console.log("je", rentedCar2)
+};
+
+
 export default carsData;

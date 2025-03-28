@@ -36,7 +36,7 @@ export default function GarageScreen({navigation}) {
   return (
 
     <SafeAreaProvider>
-      <SafeAreaView style={styles.container}>
+      <SafeAreaView style={{flex: 1}}>
        
         <FlatList
           numColumns={numColumns1}
@@ -60,13 +60,6 @@ export default function GarageScreen({navigation}) {
 }
 
 export const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    alignContent: 'flex-start',
-    backgroundColor: 'white',
-  },
   column: {
     width: '50%', // 50% -> 2 columns | 33% -> 3 columns | 25% -> 4 columns
     height: '100px',
