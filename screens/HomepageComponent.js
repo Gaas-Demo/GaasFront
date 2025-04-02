@@ -10,6 +10,7 @@ export default function Homepage({navigation}) {
   const [rentedCar, setRentedCar] = useState(null);
   const [loading, setLoading] = useState(true);
   const [modalVisible, setModalVisible] = useState(false);
+  const [VehicleCallmodalVisible, VehicleCallsetModalVisible] = useState(false);
   const [message, setMessage] = useState("");
   const [showCar, setShowCar] = useState(false);
   
@@ -42,6 +43,11 @@ export default function Homepage({navigation}) {
   const closeChatModal = () => {
     setModalVisible(false);
     setMessage("");
+  };
+
+  const openVehicleCallModal = () => VehicleCallsetModalVisible(true);
+  const closeVehicleCallModal = () => {
+    VehicleCallsetModalVisible(false);
   };
 
   const sendMessage = () => {
@@ -81,6 +87,28 @@ export default function Homepage({navigation}) {
           <Button style={styles.button} mode="contained" onPress={openChatModal}>
             Ask Help
           </Button>
+
+          <Button style={styles.button} mode="contained" onPress={openVehicleCallModal}>
+            Call your vehicle
+          </Button>
+
+        
+          <Modal
+            animationType="slide"
+            transparent={true}
+            visible={VehicleCallmodalVisible}
+            onRequestClose={closeVehicleCallModal}
+          >
+            <View style={styles.modalBackground}>
+              <View style={styles.chatWindow}>
+                <Text style={styles.chatHeader}>Vehicle Call</Text>
+                <Text style={styles.messageText}>Your vehicle is on the way!</Text>
+                <TouchableOpacity style={styles.closeButton} onPress={closeVehicleCallModal}>
+                  <Text style={styles.closeButtonText}>Close</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </Modal>
       
           <Button style={styles.button} mode="contained">
             End Contract
@@ -96,9 +124,9 @@ export default function Homepage({navigation}) {
         </>
       )}
       
-      <Button style={styles.button} mode="contained" onPress={() => setShowCar(!showCar)}>
+      {/*<Button style={styles.button} mode="contained" onPress={() => setShowCar(!showCar)}>
         Button to demo both versions of the homepage
-      </Button>
+      </Button>*/}
 
       <Modal
         animationType="slide"
