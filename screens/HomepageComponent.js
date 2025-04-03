@@ -110,7 +110,8 @@ export default function Homepage({navigation}) {
             </View>
           </Modal>
       
-          <Button style={styles.button} mode="contained">
+          {/*<Button style={styles.button} mode="contained">*/}
+          <Button style={styles.button} mode="contained" onPress={() => setShowCar(!showCar)}>
             End Contract
           </Button>
         </>
