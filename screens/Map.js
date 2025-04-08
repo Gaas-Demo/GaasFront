@@ -4,8 +4,11 @@ import { StyleSheet, View, Text, Linking, TouchableOpacity, Animated, Modal } fr
 import { Card, Button } from 'react-native-paper';
 import * as Location from 'expo-location';
 import { GOOGLE_MAPS_API_KEY } from "@env";
+import GarageScreen from './GarageScreen';
+import CarInformationScreen from './CarInformationScreen';
 
-export default function Map() {
+
+export default function Map({navigation}) {
 
   const [location, setLocation] = useState({
     latitude: 65.0800,
@@ -16,8 +19,8 @@ export default function Map() {
   const [selectedGarage, setSelectedGarage] = useState(null);
 
   const garageLocations = [
-    { latitude: 65.0900, longitude: 25.4700, title: "Porsche Garage Oulu" },
-    { latitude: 65.0070, longitude: 25.5010, title: "Porsche Garage Oulu" },
+    { latitude: 65.0900, longitude: 25.4700, title: "Porsche Garage Oulu, Ritaharju" },
+    { latitude: 65.0070, longitude: 25.5010, title: "Porsche Garage Oulu, Raksila" },
     { latitude: 60.1900, longitude: 24.9300, title: "Porsche Garage Helsinki" },
     { latitude: 61.4900, longitude: 23.7740, title: "Porsche Garage Tampere" },
     { latitude: 51.5010, longitude: -0.1400, title: "Porsche Garage Lontoo" },
@@ -75,7 +78,7 @@ export default function Map() {
             <Text>Garage Location: {selectedGarage.latitude}, {selectedGarage.longitude}</Text>
           </Card.Content>
           <Card.Actions style={styles.cardActionsContainer}>
-            <TouchableOpacity style={styles.showGarageButton} onPress={() => setSelectedGarage(null)}>
+            <TouchableOpacity style={styles.showGarageButton} onPress={()=> navigation.navigate('Car Search', {screen: 'GarageScreen', params: { from: 'Map'}})}>
               <Text style={styles.showGarageButtonText}>Show Garage</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.closeButton} onPress={() => setSelectedGarage(null)}>

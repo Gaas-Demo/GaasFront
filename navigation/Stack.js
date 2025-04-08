@@ -2,6 +2,7 @@ import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import GarageScreen from '../screens/GarageScreen';
 import CarInformationScreen from '../screens/CarInformationScreen';
+import Map from '../screens/Map';
 
 const Stack = createNativeStackNavigator();
 

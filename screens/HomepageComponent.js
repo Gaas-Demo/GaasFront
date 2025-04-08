@@ -95,10 +95,10 @@ export default function Homepage({navigation}) {
           </Button>*/}
         </>
       )}
-      
-      <Button style={styles.button} mode="contained" onPress={() => setShowCar(!showCar)}>
+
+      {/*<Button style={styles.button} mode="contained" onPress={() => setShowCar(!showCar)}>
         Button to demo both versions of the homepage
-      </Button>
+      </Button>*/}
 
       <Modal
         animationType="slide"
