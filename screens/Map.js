@@ -6,6 +6,8 @@ import * as Location from 'expo-location';
 import { GOOGLE_MAPS_API_KEY } from "@env";
 import GarageScreen from './GarageScreen';
 import CarInformationScreen from './CarInformationScreen';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+
 
 
 export default function Map({navigation}) {
@@ -26,6 +28,24 @@ export default function Map({navigation}) {
     { latitude: 51.5010, longitude: -0.1400, title: "Porsche Garage Lontoo" },
     { latitude: 52.5180, longitude: 13.4300, title: "Porsche Garage Berliini" },
   ];
+
+  function calculateDistance(lat1, lon1, lat2, lon2) {
+    const R = 6371;
+    const dLat = deg2rad(lat2 - lat1);
+    const dLon = deg2rad(lon2 - lon1);
+    const a =
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos(deg2rad(lat1)) *
+        Math.cos(deg2rad(lat2)) *
+        Math.sin(dLon / 2) *
+        Math.sin(dLon / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    const d = R * c;
+    return d.toFixed(2);
+  }
+  function deg2rad(deg) {
+    return deg * (Math.PI / 180);
+  }
 
   useEffect(() => {
     const getUserPosition = async () => {
@@ -76,8 +96,26 @@ export default function Map({navigation}) {
           <Card.Content>
             <Text style={styles.cardTitle}>{selectedGarage.title}</Text>
             <Text>Garage Location: {selectedGarage.latitude}, {selectedGarage.longitude}</Text>
+            <Text>
+              Distance: {calculateDistance(
+                location.latitude,
+                location.longitude,
+                selectedGarage.latitude,
+                selectedGarage.longitude
+              )} km
+            </Text>
           </Card.Content>
           <Card.Actions style={styles.cardActionsContainer}>
+            <TouchableOpacity
+              style={styles.directionsButton}
+              onPress={() => {
+                const url = `https://www.google.com/maps/dir/?api=1&origin=${location.latitude},${location.longitude}&destination=${selectedGarage.latitude},${selectedGarage.longitude}&travelmode=driving`;
+                Linking.openURL(url);
+              }}
+            >
+              <Text style={styles.directionsButtonText}>Directions</Text>
+              <MaterialCommunityIcons name="arrow-top-right" size={18} color="#000" style={styles.directionsIcon} />
+            </TouchableOpacity>
             <TouchableOpacity style={styles.showGarageButton} onPress={()=> navigation.navigate('Car Search', {screen: 'GarageScreen', params: { from: 'Map'}})}>
               <Text style={styles.showGarageButtonText}>Show Garage</Text>
             </TouchableOpacity>
@@ -143,6 +181,18 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 16,
     fontWeight: "bold",
+  },
+  directionsButton: {
+    width: "35%",
+    flexDirection: 'row',
+    marginTop: 15,
+    alignItems: 'center',
+  },
+  directionsButtonText: {
+    color: '#007BFF',
+    textDecorationLine: 'underline',
+    fontSize: 16,
+    marginRight: 4,
   },
 });
 
