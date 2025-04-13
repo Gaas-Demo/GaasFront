@@ -4,6 +4,8 @@ import { StyleSheet, View } from 'react-native';
 import { Button } from 'react-native-paper';
 import IconButton from 'react-native-paper';
 import { updateRentedCar } from '../Testi/testi';
+import DatePicker from './DatePicker';
+import TimePicker from './TimePicker';
 
 
 
@@ -25,6 +27,8 @@ const CarLeaseModal = ({ visible, toggleModal, item }) => {
       <View style={styles.modalOverlay}>
       <View style={styles.modalContainer}>
       <Button onPress={toggleModal}>CLOSE</Button>
+      <DatePicker />
+      <TimePicker />
       <Button onPress={Accept}>Accept</Button>
       </View>
       </View>
