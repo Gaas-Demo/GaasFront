@@ -3,8 +3,8 @@ import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { AuthProvider } from './context/AuthProvider';
 import DrawerNavigator from './navigation/Drawer';
-import Homepage from './screens/HomepageComponent';
-import Map from './screens/Map';
+//import Homepage from './screens/HomepageComponent';
+//import Map from './screens/Map';
 
 export default function App() {
 
