@@ -64,25 +64,3 @@ const styles = StyleSheet.create({
     },
 });
 
-
-
-
-/*const loginHandler = () => {
-		console.log(password + password);
-		signInWithEmailAndPassword(auth, email, password)
-			.then((userCredential) => {
-				console.log("Login", userCredential);
-				setUser(userCredential.user)
-			})
-			.catch((error) => {
-				if (error.code === 'auth/wrong-password' || error.code === 'auth/user-not-found' || error.code === 'auth/invalid-credential') {
-					console.log('Invalid credentialssss');
-					setErrorMessage('Invalid credentials!');
-				} else if (error.code === 'auth/too-many-requests') {
-					console.log('Too many attempts to login');
-					setErrorMessage('Too many attempts to login!');
-				} else {
-					console.error(error.code, error.message);
-				}
-			});
-	};*/

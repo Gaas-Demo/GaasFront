@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
+import 'react-native-gesture-handler';
 import { AuthProvider } from './context/AuthProvider';
 import DrawerNavigator from './navigation/Drawer';
 import Homepage from './screens/HomepageComponent';

@@ -103,7 +103,7 @@ export default function Homepage({navigation}) {
           </View>
 
       
-          <Button style={styles.button} mode="contained" onPress={openChatModal}>
+          <Button style={styles.buttonAskHelp} mode="contained" onPress={openChatModal}>
             Ask Help
           </Button>
 
@@ -237,8 +237,28 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "flex-start",
     alignItems: "center",
-    padding: 20,
+    padding: 10,
     backgroundColor: "#f8f9fa",
+  },
+  contractCard: {
+    marginTop: 50,
+    width: "95%",
+    minHeight: 380,
+    backgroundColor: "#ffffff",
+    padding: 20,
+    borderRadius: 15,
+    borderTopLeftRadius: 5,
+    borderBottomLeftRadius: 5,
+    borderColor: "#cc0000", 
+    borderLeftWidth:5,
+    shadowColor: "#4d0000",
+    shadowOpacity: 0.1,
+    shadowRadius: 10,
+    elevation: 7,
+    alignItems: "center",
+  },
+  sectionTitle: {
+    fontSize: 22
   },
   headline: {
     marginBottom: 20,
@@ -262,8 +282,12 @@ const styles = StyleSheet.create({
     elevation: 4,
   },  
   button: {
-    marginBottom: 10,
-    width: "100%",
+    width: "95%",
+    marginTop: 15,
+    paddingVertical: 7,
+    backgroundColor: "#DC3545",
+    borderRadius: 8,
+    alignItems: "center",
   },
   modalBackground: {
     flex: 1,
@@ -307,7 +331,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     minHeight: 40,
   },
-  
   fuelContainer: {
     width: "100%",
     alignItems: "center",
