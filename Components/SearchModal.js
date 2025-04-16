@@ -1,35 +1,53 @@
 import React, { useEffect, useState } from 'react'
 import { StyleSheet, View, Text } from 'react-native';
-import { Modal, TextInput } from 'react-native-paper';
-import { SearchModelYearColor } from '../Functions/SearchFunctions';
+import { Modal, RadioButton, TextInput } from 'react-native-paper';
+import { FilterAccessory, SearchModelYearColor } from '../Functions/SearchFunctions';
 import carsData from '../Testi/testi';
-import { Chip } from 'react-native-paper';
+import { Button } from 'react-native-paper';
 
 
 const SearchModal = ({ visible, toggleModal, Search, data }) => {
 
     const [text, setText] = useState("");
-    const [SearchData, setSearchData] =  useState(data);
-    console.log("searchmodal", Search, data)
+    const [SearchData, setSearchData] = useState(data);
+    const [selected, SetSelected] = useState([]);
+    const [combinedData, setCombinedData] = useState([]);
 
     useEffect(() => {
-      handleSearch()
-    }, [])
-    
+        handleSearch()
+    }, [text, selected])
 
-   const handleSearch = () => {
 
-        if(text.length > 0){
-            const searchedData = SearchModelYearColor(text, data)
-            console.log("searchedData", searchedData)
+    const handleSearch = () => {
+        console.log("sel", selected)
+        const searchedData = SearchModelYearColor(text, data)
+        if (selected.length <= 0 || text.length <= 0) {
             Search(searchedData)
         }
-        else {
-            Search(carsData)
+        if (selected.length > 0) {
+            const searchedData2 = FilterAccessory(selected, searchedData)
+            console.log("searchedData", searchedData, "+", searchedData2)
+            Search(searchedData2)
         }
-    
-   }
-    
+        else {
+            Search(searchedData)
+        }
+
+
+
+    }
+
+   const handleFilter = (filter) => {
+        console.log("filter", filter)
+       SetSelected((prevselected) => {
+        if(prevselected.includes(filter))
+        {
+            return prevselected.filter((item) => item !== filter)
+        }
+        return [...prevselected, filter]
+       })
+    }
+    const isSelected = (filter) => selected.includes(filter)
 
     return (
         <Modal
@@ -44,14 +62,27 @@ const SearchModal = ({ visible, toggleModal, Search, data }) => {
                         label="Search"
                         value={text}
                         onChangeText={text => setText(text)}
-                        onSubmitEditing={() =>{
-                            handleSearch()
-                            toggleModal()
+                        onSubmitEditing={() => {
+                            //    handleSearch()
+                            //   toggleModal()
                         }}
                     />
-                </View>
+                    <Button mode={isSelected('child') ? 'contained' : 'outlined'}
+                    onPress={() => handleFilter('child')
+                    }>
+                    Child
+                </Button>
+                <Button mode={isSelected('roof') ? 'contained' : 'outlined'} onPress={() => handleFilter('roof')
+                    }>
+                    Roof Rails
+                </Button>
+                <Button mode={isSelected('animal') ? 'contained' : 'outlined'} onPress={() => handleFilter('animal')
+                    }>
+                    Animal
+                </Button>
             </View>
-        </Modal>
+        </View>
+        </Modal >
     );
 };
 
