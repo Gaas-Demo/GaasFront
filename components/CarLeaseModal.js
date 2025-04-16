@@ -4,6 +4,7 @@ import { StyleSheet, View } from 'react-native';
 import { Button } from 'react-native-paper';
 import IconButton from 'react-native-paper';
 import { updateRentedCar } from '../Testi/testi';
+import CarAccessory from './CarAccessory';
 
 
 
@@ -40,15 +41,12 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
 },
     modalContainer: {
-      marginTop: 100,
-      backgroundColor: 'white',
-      padding: 20,
-      borderRadius: 10,
-      alignItems: 'center',
-      justifyContent: 'center',
-      height: 200,
       width: 300,
-      alignSelf: 'center',
+      height: 600,
+    padding: 20,
+    backgroundColor: 'white',
+    borderRadius: 10,
+    alignItems: 'center',
     },
 });
 
