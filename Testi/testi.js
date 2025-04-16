@@ -1,5 +1,6 @@
 
 
+
 const carsData = [
   { id: 1, Type: 'Suv', model: 'Macan', year: "2021", color: 'Red', Wifi: true, accesory:{animal:true, roof:true,child:true}},
   { id: 2, Type: 'SUV', model: 'Cayenne', year: "2020", color: 'Blue',Wifi: false,accesory:{animal:true, roof:true,child:true}},

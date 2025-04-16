@@ -10,9 +10,12 @@ export default function Homepage({navigation}) {
   const [rentedCar, setRentedCar] = useState(null);
   const [loading, setLoading] = useState(true);
   const [modalVisible, setModalVisible] = useState(false);
+  const [VehicleCallmodalVisible, VehicleCallsetModalVisible] = useState(false);
+  const [endContractModalVisible, setEndContractModalVisible] = useState(false);
   const [message, setMessage] = useState("");
   const [showCar, setShowCar] = useState(false);
-  
+  const [distanceDriven, setDistanceDriven] = useState(32.4);
+
 
   useEffect(() => {
     const focusListener = navigation.addListener('focus', () => {
@@ -44,6 +47,19 @@ export default function Homepage({navigation}) {
     setMessage("");
   };
 
+  const openVehicleCallModal = () => VehicleCallsetModalVisible(true);
+  const closeVehicleCallModal = () => {
+    VehicleCallsetModalVisible(false);
+  };
+
+  const openEndContractModal = () => setEndContractModalVisible(true);
+  const closeEndContractModal = () => setEndContractModalVisible(false);
+
+  const handleEndContract = () => {
+    setShowCar(false);
+    setEndContractModalVisible(false);
+  };
+
   const sendMessage = () => {
     setMessage("");
   };
@@ -58,6 +74,7 @@ export default function Homepage({navigation}) {
   }
 
   return (
+    <ScrollView contentContainerStyle={styles.scrollContainer}>
     <View style={styles.container}>
       {showCar ? (
         <>
@@ -66,23 +83,65 @@ export default function Homepage({navigation}) {
           </Text>
       
           <Image source={rentedCar.image} style={styles.carImage} />
+          <View style={styles.infoCard}>
           <Text style={styles.text} variant="bodyLarge">{rentedCar.model}</Text>
           <Text style={styles.text} variant="bodyLarge">License: {rentedCar.licensePlate}</Text>
           <Text style={styles.text} variant="bodyLarge">Rental Period: {rentedCar.rentalPeriod}</Text>
+          </View>
       
-          <View style={styles.fuelContainer}>
+          <View style={styles.metricCard}>
             <Text style={styles.fuelLabel}>Fuel Level:</Text>
             <View style={styles.fuelBar}>
               <View style={[styles.fuelFill, { width: "80%" }]} />
             </View>
             <Text style={styles.fuelPercentage}>80%</Text>
+
+            <View style={styles.distanceContainer}>
+              <Text style={styles.fuelLabel}>Distance Driven:</Text>
+              <Text style={styles.distanceValue}>{distanceDriven} km</Text>
+            </View>
           </View>
+
       
           <Button style={styles.button} mode="contained" onPress={openChatModal}>
             Ask Help
           </Button>
+
+          <Button style={styles.button} mode="contained" onPress={openVehicleCallModal}>
+            Call your vehicle
+          </Button>
+
+        
+          <Modal
+            animationType="slide"
+            transparent={true}
+            visible={VehicleCallmodalVisible}
+            onRequestClose={closeVehicleCallModal}
+          >
+            <View style={styles.modalBackground}>
+              <View style={styles.chatWindow}>
+                <Text style={styles.chatHeader}>Vehicle Call</Text>
+                <Text style={styles.messageText}>Your vehicle is on the way!</Text>
+                <View style={{ flexDirection: "row", justifyContent: "space-between", marginTop: 20 }}>
+                  <TouchableOpacity
+                    style={[styles.button, { backgroundColor: "#28a745", flex: 1, marginRight: 10 }]}
+                    onPress={closeVehicleCallModal}
+                  >
+                    <Text style={{ color: "#fff", textAlign: "center" }}>OK</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    style={[styles.button, { backgroundColor: "#6c757d", flex: 1 }]}
+                    onPress={closeVehicleCallModal}
+                  >
+                    <Text style={{ color: "#fff", textAlign: "center" }}>Cancel</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+            </View>
+          </Modal>
       
-          <Button style={styles.button} mode="contained">
+          {/*<Button style={styles.button} mode="contained">*/}
+          <Button style={styles.button} mode="contained" onPress={openEndContractModal}>
             End Contract
           </Button>
         </>
@@ -96,9 +155,9 @@ export default function Homepage({navigation}) {
         </>
       )}
       
-      <Button style={styles.button} mode="contained" onPress={() => setShowCar(!showCar)}>
+      {/*<Button style={styles.button} mode="contained" onPress={() => setShowCar(!showCar)}>
         Button to demo both versions of the homepage
-      </Button>
+      </Button>*/}
 
       <Modal
         animationType="slide"
@@ -131,11 +190,49 @@ export default function Homepage({navigation}) {
           </View>
         </View>
       </Modal>
+
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={endContractModalVisible}
+        onRequestClose={closeEndContractModal}
+      >
+        <View style={styles.modalBackground}>
+          <View style={styles.chatWindow}>
+            <Text style={styles.chatHeader}>End Contract</Text>
+            <Text style={styles.messageText}>Are you sure you want to end this contract?</Text>
+            
+            <View style={{ flexDirection: "row", justifyContent: "space-between", marginTop: 20 }}>
+              <TouchableOpacity style={[styles.button, { backgroundColor: "#dc3545", flex: 1, marginRight: 10 }]} onPress={handleEndContract}>
+                <Text style={{ color: "#fff", textAlign: "center" }}>Yes, terminate my current contract</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={[styles.button, { backgroundColor: "#6c757d", flex: 1 }]} onPress={closeEndContractModal}>
+                <Text style={{ color: "#fff", textAlign: "center" }}>Cancel</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </Modal>
     </View>
+  </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
+  scrollContainer: {
+    padding: 20,
+    backgroundColor: "#f8f9fa",
+    flexGrow: 1,
+    justifyContent: "flex-start",
+  },
+  infoCard: {
+    backgroundColor: "#fff",
+    padding: 15,
+    borderRadius: 10,
+    width: "100%",
+    marginBottom: 20,
+    elevation: 2,
+  },  
   container: {
     flex: 1,
     justifyContent: "flex-start",
@@ -146,34 +243,40 @@ const styles = StyleSheet.create({
   headline: {
     marginBottom: 20,
     fontWeight: "bold",
-  },
+    fontSize: 22,
+    color: "#212529",
+    textAlign: "center",
+  },  
   text: {
     marginBottom: 20,
   },
   carImage: {
     width: "100%",
-    height: 180,
-    borderRadius: 10,
-    marginBottom: 15,
-  },
+    height: 200,
+    borderRadius: 15,
+    marginBottom: 20,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.1,
+    shadowRadius: 6,
+    elevation: 4,
+  },  
   button: {
     marginBottom: 10,
     width: "100%",
   },
   modalBackground: {
     flex: 1,
-    justifyContent: "flex-end",
+    justifyContent: "center",
     alignItems: "center",
     backgroundColor: "rgba(0, 0, 0, 0.5)",
   },
   chatWindow: {
-    width: "100%",
+    width: "90%",
     backgroundColor: "#fff",
     padding: 20,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
+    borderRadius: 20,
     minHeight: 300,
-    paddingBottom: 20,
   },
   chatHeader: {
     fontSize: 18,
@@ -211,25 +314,50 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
   fuelLabel: {
+    fontSize: 14,
+    fontWeight: "600",
+    color: "#495057",
+    marginBottom: 5,
+  },
+  fuelPercentage: {
     fontSize: 16,
     fontWeight: "bold",
-    marginBottom: 5,
+    color: "#28a745",
+    marginTop: 5,
   },
   fuelBar: {
     width: "100%",
     height: 15,
-    backgroundColor: "#ddd",
-    borderRadius: 10,
+    backgroundColor: "#e9ecef",
+    borderRadius: 8,
     overflow: "hidden",
   },
   fuelFill: {
     height: "100%",
-    width: "80%",
     backgroundColor: "#28a745",
+    borderTopLeftRadius: 8,
+    borderBottomLeftRadius: 8,
+  },  
+  distanceContainer: {
+    alignItems: "center",
+    marginBottom: 15,
   },
-  fuelPercentage: {
-    fontSize: 14,
+  distanceValue: {
+    fontSize: 16,
+    fontWeight: "bold",
     color: "#333",
-    marginTop: 5,
   },
+  metricCard: {
+    width: "100%",
+    backgroundColor: "#ffffff",
+    borderRadius: 12,
+    padding: 15,
+    marginBottom: 20,
+    elevation: 3,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+  },
+  
 });
