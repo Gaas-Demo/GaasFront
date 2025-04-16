@@ -5,6 +5,7 @@ import { Button } from 'react-native-paper';
 import IconButton from 'react-native-paper';
 import { updateRentedCar } from '../Testi/testi';
 import CarAccessory from './CarAccessory';
+import { ScrollView } from 'react-native-gesture-handler';
 
 
 
@@ -18,18 +19,23 @@ const CarLeaseModal = ({ visible, toggleModal, item }) => {
   }
 
   return (
+
     <Modal
       visible={visible}
       transparent={true}
       onRequestClose={toggleModal}
     >
+      <ScrollView>
       <View style={styles.modalOverlay}>
       <View style={styles.modalContainer}>
+      <CarAccessory/>
       <Button onPress={toggleModal}>CLOSE</Button>
       <Button onPress={Accept}>Accept</Button>
       </View>
       </View>
+      </ScrollView>
     </Modal>
+    
 
   )
 }
@@ -42,7 +48,6 @@ const styles = StyleSheet.create({
 },
     modalContainer: {
       width: 300,
-      height: 600,
     padding: 20,
     backgroundColor: 'white',
     borderRadius: 10,
