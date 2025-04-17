@@ -26,13 +26,13 @@ const CarLeaseModal = ({ visible, toggleModal, item }) => {
     toggleModal()
   }
 
-  
+
   const Reserve = () => {
     if (selectedDate && selectedTime) {
       const dateTime = new Date(selectedDate);
       dateTime.setHours(selectedTime.hours, selectedTime.minutes);
       updateReservedCar(item, dateTime);
-      console.log("datetime",dateTime);
+      console.log("datetime", dateTime);
     }
     toggleModal();
   };
@@ -44,20 +44,20 @@ const CarLeaseModal = ({ visible, toggleModal, item }) => {
       transparent={true}
       onRequestClose={toggleModal}
     >
-      <ScrollView>
+
       <View style={styles.modalOverlay}>
-      <View style={styles.modalContainer}>
-      <CarAccessory/>
-      <Button onPress={toggleModal}>CLOSE</Button>
-      <DatePicker onDateChange={setSelectedDate} />
-      <TimePicker onTimeChange={setSelectedTime}/>
-      <Button onPress={Reserve}>Rent later</Button>
-      <Button onPress={Accept}>Rent now</Button>
+        <View style={styles.modalContainer}>
+          <CarAccessory />
+          <DatePicker onDateChange={setSelectedDate} />
+          <TimePicker onTimeChange={setSelectedTime} />
+          <Button onPress={toggleModal}>CLOSE</Button>
+          <Button onPress={Reserve}>Rent later</Button>
+          <Button onPress={Accept}>Rent now</Button>
+        </View>
       </View>
-      </View>
-      </ScrollView>
+
     </Modal>
-    
+
 
   )
 }
@@ -67,14 +67,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
-},
-    modalContainer: {
-      width: 300,
+  },
+  modalContainer: {
+    width: 300,
+    height: 450,
     padding: 20,
     backgroundColor: 'white',
     borderRadius: 10,
     alignItems: 'center',
-    },
+  },
 });
 
 export default CarLeaseModal;
