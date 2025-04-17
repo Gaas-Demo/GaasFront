@@ -6,10 +6,16 @@ import IconButton from 'react-native-paper';
 import { updateRentedCar } from '../Testi/testi';
 import DatePicker from './DatePicker';
 import TimePicker from './TimePicker';
+import { en, registerTranslation } from 'react-native-paper-dates'
+import { updateReservedCar } from '../screens/Calendar';
+registerTranslation('en', en)
 
 
 
 const CarLeaseModal = ({ visible, toggleModal, item }) => {
+  const currentDate = new Date()
+  const [selectedDate, setSelectedDate] = useState(currentDate);
+  const [selectedTime, setSelectedTime] = useState({ hours: currentDate.getHours(), minutes: currentDate.getMinutes() });
 
   console.log("modal", item)
 
@@ -17,6 +23,17 @@ const CarLeaseModal = ({ visible, toggleModal, item }) => {
     updateRentedCar(item)
     toggleModal()
   }
+
+  
+  const Reserve = () => {
+    if (selectedDate && selectedTime) {
+      const dateTime = new Date(selectedDate);
+      dateTime.setHours(selectedTime.hours, selectedTime.minutes);
+      updateReservedCar(item, dateTime);
+      console.log("datetime",dateTime);
+    }
+    toggleModal();
+  };
 
   return (
     <Modal
@@ -27,9 +44,10 @@ const CarLeaseModal = ({ visible, toggleModal, item }) => {
       <View style={styles.modalOverlay}>
       <View style={styles.modalContainer}>
       <Button onPress={toggleModal}>CLOSE</Button>
-      <DatePicker />
-      <TimePicker />
-      <Button onPress={Accept}>Accept</Button>
+      <DatePicker onDateChange={setSelectedDate} />
+      <TimePicker onTimeChange={setSelectedTime}/>
+      <Button onPress={Reserve}>Rent later</Button>
+      <Button onPress={Accept}>Rent now</Button>
       </View>
       </View>
     </Modal>
@@ -50,7 +68,7 @@ const styles = StyleSheet.create({
       borderRadius: 10,
       alignItems: 'center',
       justifyContent: 'center',
-      height: 200,
+      height: 300,
       width: 300,
       alignSelf: 'center',
     },
