@@ -41,7 +41,12 @@ export default function BottomTabNavigator() {
                     <Icon source="map-search" size={size} color={color} />
             )}}/>
             
-            <Tab.Screen name="Calendar" component={CalendarScreen} />
+            <Tab.Screen name="Calendar" component={CalendarScreen}  options={{
+                ...headerOptions,
+                tabBarIcon: ({ color, size }) => (
+                    <Icon source="calendar" size={size} color={color} />
+            )}}/>
+
             {/* <Tab.Screen name="Page name here" component={Component name here} /> */}
         </Tab.Navigator>
     );
