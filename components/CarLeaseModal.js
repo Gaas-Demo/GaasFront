@@ -4,6 +4,8 @@ import { StyleSheet, View } from 'react-native';
 import { Button } from 'react-native-paper';
 import IconButton from 'react-native-paper';
 import { updateRentedCar } from '../Testi/testi';
+import CarAccessory from './CarAccessory';
+import { ScrollView } from 'react-native-gesture-handler';
 import DatePicker from './DatePicker';
 import TimePicker from './TimePicker';
 import { en, registerTranslation } from 'react-native-paper-dates'
@@ -36,13 +38,16 @@ const CarLeaseModal = ({ visible, toggleModal, item }) => {
   };
 
   return (
+
     <Modal
       visible={visible}
       transparent={true}
       onRequestClose={toggleModal}
     >
+      <ScrollView>
       <View style={styles.modalOverlay}>
       <View style={styles.modalContainer}>
+      <CarAccessory/>
       <Button onPress={toggleModal}>CLOSE</Button>
       <DatePicker onDateChange={setSelectedDate} />
       <TimePicker onTimeChange={setSelectedTime}/>
@@ -50,7 +55,9 @@ const CarLeaseModal = ({ visible, toggleModal, item }) => {
       <Button onPress={Accept}>Rent now</Button>
       </View>
       </View>
+      </ScrollView>
     </Modal>
+    
 
   )
 }
@@ -62,15 +69,11 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
 },
     modalContainer: {
-      marginTop: 100,
-      backgroundColor: 'white',
-      padding: 20,
-      borderRadius: 10,
-      alignItems: 'center',
-      justifyContent: 'center',
-      height: 300,
       width: 300,
-      alignSelf: 'center',
+    padding: 20,
+    backgroundColor: 'white',
+    borderRadius: 10,
+    alignItems: 'center',
     },
 });
 

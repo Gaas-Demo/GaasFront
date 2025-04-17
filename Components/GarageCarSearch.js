@@ -21,6 +21,8 @@ const styles = StyleSheet.create({
     bottom: 15,
     right: 15,
     zIndex: 1000,
+    backgroundColor: "#fff4f4",
+
   },
 
 })

@@ -12,26 +12,21 @@ const image2 = require('../Testi/testi2.jpg')
     return (
         <ScrollView>
             <View style={styles.container}>
-                <Card mode='elevated'
-                    elevation={5}
-                >
+                <Card mode='elevated' elevation={5} style={styles.cardContainer}>
                     <CarMotor item={item}/>
                 </Card>
-                <View style={styles.container}>
-                    <Card>
-                        <CarTechnology />
-                    </Card>
-                </View>
-                <View style={styles.container}>
-                    <Card>
-                        <CarImage image={image2}/>
-                    </Card>
-                </View>
-                <View style={styles.container}>
-                    <Card>
-                        <CarTechnology />
-                    </Card>
-                </View>
+
+                <Card style={styles.cardContainer}>
+                    <CarTechnology />
+                </Card>
+
+                <Card style={styles.cardContainer}>
+                    <CarImage image={image2}/>
+                </Card>
+
+                <Card style={styles.cardContainer}>
+                    <CarTechnology />
+                </Card>
             </View>
 
         </ScrollView>
@@ -40,7 +35,7 @@ const image2 = require('../Testi/testi2.jpg')
 
 function CarMotor({item}) {
     return (
-        <View>
+        <View style={styles.infoContainer}>
             <Text>{item.model} {item.Type} {item.year} {item.color}</Text>
             <Text>Moottoritilavuus (l): 2,9</Text>
             <Text>Automaattivaihteisto:
@@ -55,7 +50,7 @@ function CarMotor({item}) {
 
 function CarTechnology() {
     return (
-        <View>
+        <View style={styles.infoContainer}>
             <Text>Power Steering Plus -ohjaustehostin
                 ParkAssist (edessä ja takana) sis. peruutuskameran
                 Smart Lift -säätö maavaran korkeudelle
@@ -70,7 +65,7 @@ function CarTechnology() {
 }
 function CarSafety() {
     return (
-        <View>
+        <View style={styles.infoContainer}>
             <Text>Adaptiivinen ilmajousitus ja Porsche Active Suspension Management (PASM)
                 Vakionopeudensäädin, jossa aktiivinen nopeusrajoitusavustin
                 Kaistavahti
@@ -82,5 +77,17 @@ function CarSafety() {
 const styles = StyleSheet.create({
     container: {
         paddingVertical: 20,
-    }
+    },
+    cardContainer: {
+        marginVertical: 7,
+        borderTopLeftRadius: 5,
+        borderBottomLeftRadius: 5,
+        borderColor: "#cc0000", 
+        borderLeftWidth:5,
+    },
+    infoContainer: {
+        marginVertical: 5,
+        padding: 10,
+        paddingRight: 15,
+    },
 })

@@ -1,5 +1,5 @@
 import { StyleSheet, View } from 'react-native';
-import { Text } from 'react-native-paper';
+import { Text, Icon } from 'react-native-paper';
 
 
 
@@ -7,6 +7,7 @@ export default function PlaceholderScreen() {
   return (
     <View style={styles.container}>
       <Text variant='headlineLarge'>placeholder</Text>
+      <Icon source="access-point" size={30} color="red"></Icon>
     </View>
   );
 }
