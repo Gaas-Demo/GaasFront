@@ -2,9 +2,13 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { AuthProvider } from './context/AuthProvider';
+<<<<<<< Updated upstream
 import DrawerNavigator from './navigation/Drawer';
 //import Homepage from './screens/HomepageComponent';
 //import Map from './screens/Map';
+=======
+import { AppNavigator } from './navigation/AppNavigator';
+>>>>>>> Stashed changes
 
 export default function App() {
 
@@ -13,7 +17,7 @@ export default function App() {
     <AuthProvider>
       <SafeAreaView style={{ flex: 1 }}>
         <NavigationContainer>
-          <DrawerNavigator />
+          <AppNavigator />
         </NavigationContainer>
       </SafeAreaView>
     </AuthProvider>

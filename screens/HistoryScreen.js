@@ -1,12 +1,20 @@
 import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
 import { View,  FlatList, ScrollView, StyleSheet } from 'react-native'
 import HistoryCard from '../components/HistoryCard';
+<<<<<<< Updated upstream
+=======
+import { useState } from 'react';
+>>>>>>> Stashed changes
 
 export default function HistoryScreen({ navigation }) {
 
     const numColumns = 1;
 
+<<<<<<< Updated upstream
     const historyData = [
+=======
+    const [historyData, setHistoryData] = useState([
+>>>>>>> Stashed changes
         {
             id: 1,
             brandName: "Porsche",
@@ -91,7 +99,11 @@ export default function HistoryScreen({ navigation }) {
             dateStart: "2025-01-01",
             dateEnd: "2025-12-31"
         }
+<<<<<<< Updated upstream
     ];
+=======
+    ]);
+>>>>>>> Stashed changes
 
     return (
         <SafeAreaProvider>
