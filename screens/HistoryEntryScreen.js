@@ -1,10 +1,6 @@
 import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
 import { Text, TextInput, Button, Card, Avatar } from 'react-native-paper';
-<<<<<<< Updated upstream
-import { StyleSheet } from 'react-native';
-=======
 import { Image, StyleSheet, View } from 'react-native';
->>>>>>> Stashed changes
 
 export default function HistoryEntryScreen({ route, navigation }) {
     const { item } = route.params;
@@ -12,20 +8,14 @@ export default function HistoryEntryScreen({ route, navigation }) {
     return (
         <SafeAreaProvider>
             <SafeAreaView style={{ flex: 1 }}>
-<<<<<<< Updated upstream
-                <Button style={styles.button} mode="contained" onPress={() => navigation.navigate('CarInformationScreen')}>Car Details</Button>
-=======
                 <CarDetailsSimple item={item} />
                 <Button style={styles.button} mode="contained" onPress={() => navigation.navigate('CarInformationScreen', { item })}>Car Details</Button>
->>>>>>> Stashed changes
                 <Button style={styles.button} mode="contained" onPress={() => navigation.navigate('FeedbackScreen')}>Give Feedback</Button>
             </SafeAreaView>
         </SafeAreaProvider>
     )
 }
 
-<<<<<<< Updated upstream
-=======
 function CarDetailsSimple({ item }) {
     console.log(item);
 
@@ -54,7 +44,6 @@ function CarDetailsSimple({ item }) {
     )
 }
 
->>>>>>> Stashed changes
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -82,8 +71,6 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         height: "calc(100% - 8px)",
     },
-<<<<<<< Updated upstream
-=======
     carImageContainer: {
         height: "50%",
         margin: 8,
@@ -123,5 +110,4 @@ const styles = StyleSheet.create({
         marginBottom: 0,
         padding: 4,
     }
->>>>>>> Stashed changes
 });

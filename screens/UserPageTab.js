@@ -1,10 +1,7 @@
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { StyleSheet, View, FlatList } from 'react-native';
 import { Text, TextInput, Button, Card, Avatar } from 'react-native-paper';
-<<<<<<< Updated upstream
-=======
 import { useState, useEffect } from 'react';
->>>>>>> Stashed changes
 
 const userInfo = {
     firstName: "Pertti",
@@ -16,9 +13,6 @@ const userInfo = {
 };
 
 export default function UserPageTab({ navigation }) {
-<<<<<<< Updated upstream
-
-=======
     const [userData, setUserData] = useState({
         firstname: "Pertti",
         lastname: "Makkonen",
@@ -26,7 +20,6 @@ export default function UserPageTab({ navigation }) {
         email: "pertti.makkonen@example.com",
         ssn: "01011990AAAAA"
     });
->>>>>>> Stashed changes
 
 
 
