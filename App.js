@@ -15,7 +15,7 @@ export default function App() {
     <AuthProvider>
       <SafeAreaView style={{ flex: 1 }}>
         <NavigationContainer>
-          <DrawerNavigator />
+          <AppNavigator />
         </NavigationContainer>
       </SafeAreaView>
     </AuthProvider>
