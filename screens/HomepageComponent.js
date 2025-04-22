@@ -276,6 +276,7 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "center",
     padding: 10,
+    padding: 10,
     backgroundColor: "#f8f9fa",
   },
   contractCard: {
@@ -329,6 +330,12 @@ const styles = StyleSheet.create({
     borderRadius: 10, 
   },  
   button: {
+    width: "95%",
+    marginTop: 15,
+    paddingVertical: 7,
+    backgroundColor: "#DC3545",
+    borderRadius: 8,
+    alignItems: "center",
     width: "95%",
     marginTop: 15,
     paddingVertical: 7,

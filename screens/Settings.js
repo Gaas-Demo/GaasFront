@@ -1,4 +1,5 @@
 import { StyleSheet, View } from 'react-native';
+import stylesGlobal from '../styles';
 import { Text, TextInput, Button } from 'react-native-paper';
 
 

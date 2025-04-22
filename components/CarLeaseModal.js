@@ -6,10 +6,18 @@ import IconButton from 'react-native-paper';
 import { updateRentedCar } from '../Testi/testi';
 import CarAccessory from './CarAccessory';
 import { ScrollView } from 'react-native-gesture-handler';
+import DatePicker from './DatePicker';
+import TimePicker from './TimePicker';
+import { en, registerTranslation } from 'react-native-paper-dates'
+import { updateReservedCar } from '../screens/Calendar';
+registerTranslation('en', en)
 
 
 
 const CarLeaseModal = ({ visible, toggleModal, item }) => {
+  const currentDate = new Date()
+  const [selectedDate, setSelectedDate] = useState(currentDate);
+  const [selectedTime, setSelectedTime] = useState({ hours: currentDate.getHours(), minutes: currentDate.getMinutes() });
 
   console.log("modal", item)
 
@@ -18,6 +26,17 @@ const CarLeaseModal = ({ visible, toggleModal, item }) => {
     toggleModal()
   }
 
+
+  const Reserve = () => {
+    if (selectedDate && selectedTime) {
+      const dateTime = new Date(selectedDate);
+      dateTime.setHours(selectedTime.hours, selectedTime.minutes);
+      updateReservedCar(item, dateTime);
+      console.log("datetime", dateTime);
+    }
+    toggleModal();
+  };
+
   return (
 
     <Modal
@@ -25,17 +44,20 @@ const CarLeaseModal = ({ visible, toggleModal, item }) => {
       transparent={true}
       onRequestClose={toggleModal}
     >
-      <ScrollView>
+
       <View style={styles.modalOverlay}>
-      <View style={styles.modalContainer}>
-      <CarAccessory/>
-      <Button onPress={toggleModal}>CLOSE</Button>
-      <Button onPress={Accept}>Accept</Button>
+        <View style={styles.modalContainer}>
+          <CarAccessory />
+          <DatePicker onDateChange={setSelectedDate} />
+          <TimePicker onTimeChange={setSelectedTime} />
+          <Button onPress={toggleModal}>CLOSE</Button>
+          <Button onPress={Reserve}>Rent later</Button>
+          <Button onPress={Accept}>Rent now</Button>
+        </View>
       </View>
-      </View>
-      </ScrollView>
+
     </Modal>
-    
+
 
   )
 }
@@ -45,14 +67,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
-},
-    modalContainer: {
-      width: 300,
+  },
+  modalContainer: {
+    width: 300,
+    height: 600,
     padding: 20,
     backgroundColor: 'white',
     borderRadius: 10,
     alignItems: 'center',
-    },
+  },
 });
 
 export default CarLeaseModal;

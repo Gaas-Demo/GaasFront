@@ -28,15 +28,23 @@ const CarAccessory = () => {
           status={isSelected('Child') ? 'checked' : 'unchecked'}
           onPress={() => handleSelected('Child')}
         />
-        <Text style={styles.radioButtonLabel}>Child</Text>
+        <Text style={styles.radioButtonLabel}>Child seat</Text>
       </View>
       <View style={styles.radioButtonContainer}>
         <RadioButton
-          value="Roof"
-          status={isSelected('Roof') ? 'checked' : 'unchecked'}
-          onPress={() => handleSelected('Roof')}
+          value="RoofBox"
+          status={isSelected('RoofBox') ? 'checked' : 'unchecked'}
+          onPress={() => handleSelected('RoofBox')}
         />
-        <Text style={styles.radioButtonLabel}>Roof</Text>
+        <Text style={styles.radioButtonLabel}>Roof Box</Text>
+      </View>
+      <View style={styles.radioButtonContainer}>
+        <RadioButton
+          value="RoofBike"
+          status={isSelected('RoofBike') ? 'checked' : 'unchecked'}
+          onPress={() => handleSelected('RoofBike')}
+        />
+        <Text style={styles.radioButtonLabel}>Roof Bike Carrier</Text>
       </View>
       <View style={styles.radioButtonContainer}>
         <RadioButton
