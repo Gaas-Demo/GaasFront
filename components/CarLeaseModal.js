@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
   },
   modalContainer: {
     width: 300,
-    height: 450,
+    height: 600,
     padding: 20,
     backgroundColor: 'white',
     borderRadius: 10,
