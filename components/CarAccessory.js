@@ -26,7 +26,7 @@ const CarAccessory = () => {
         <RadioButton
           value="Child"
           status={isSelected('Child') ? 'checked' : 'unchecked'}
-          onPress={() => handleSelected('Child Seat')}
+          onPress={() => handleSelected('Child')}
         />
         <Text style={styles.radioButtonLabel}>Child seat</Text>
       </View>
