@@ -7,6 +7,7 @@ import Map from '../screens/Map';
 import Homepage from '../screens/HomepageComponent';
 import GarageScreen from '../screens/GarageScreen';
 import { StyleSheet } from 'react-native';
+import CalendarScreen from '../screens/Calendar';
 
 const Tab = createBottomTabNavigator();
 
@@ -40,6 +41,12 @@ export default function BottomTabNavigator() {
                     <Icon source="map-search" size={size} color={color} />
             )}}/>
             
+            <Tab.Screen name="Calendar" component={CalendarScreen}  options={{
+                ...headerOptions,
+                tabBarIcon: ({ color, size }) => (
+                    <Icon source="calendar" size={size} color={color} />
+            )}}/>
+
             {/* <Tab.Screen name="Page name here" component={Component name here} /> */}
         </Tab.Navigator>
     );
