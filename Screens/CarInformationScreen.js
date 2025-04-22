@@ -25,8 +25,8 @@ export default function CarInformationScreen({ route }) {
           <CarImage image={image} />
           <CarInfo item={item} />
           <Button mode='outlined' onPress={toggleModal}>Lease Car</Button>
-          <CarLeaseModal visible={modalVisible} toggleModal={toggleModal} item={item}/>
         </ScrollView>
+          <CarLeaseModal visible={modalVisible} toggleModal={toggleModal} item={item}/>
       </SafeAreaView>
     </SafeAreaProvider>
   )
