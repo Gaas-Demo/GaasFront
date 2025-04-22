@@ -5,9 +5,14 @@ import PlaceholderScreen from '../screens/Placeholder';
 import { StackScreen1 } from './Stack';
 import Map from '../screens/Map';
 import Homepage from '../screens/HomepageComponent';
+
+import UserPageTab from '../screens/UserPageTab';
+import { UserPageStack } from './UserPageStack';
+
 import GarageScreen from '../screens/GarageScreen';
 import { StyleSheet } from 'react-native';
 import CalendarScreen from '../screens/Calendar';
+
 
 const Tab = createBottomTabNavigator();
 
@@ -24,6 +29,8 @@ export default function BottomTabNavigator() {
                     <DrawerToggleButton />
                 )
             }}>
+
+            <Tab.Screen name="UserTab" component={UserPageStack}/>
             <Tab.Screen name="Contracts" component={Homepage} options={{
                 ...headerOptions,
                 tabBarIcon: ({ color, size }) => (
@@ -46,6 +53,7 @@ export default function BottomTabNavigator() {
                 tabBarIcon: ({ color, size }) => (
                     <Icon source="calendar" size={size} color={color} />
             )}}/>
+
 
             {/* <Tab.Screen name="Page name here" component={Component name here} /> */}
         </Tab.Navigator>
