@@ -197,13 +197,3 @@ const styles = StyleSheet.create({
 });
 
 
-/*
-<BottomSheet
-          ref={bottomSheetRef} // Ensure useRef is being used properly
-          index={-1} // Keeps it hidden initially
-          snapPoints={["25%", "50%"]} // Set snap points as per your needs
-        >
-          <BottomSheetView style={styles.contentContainer}>
-            <Text>Awesome 🎉</Text>
-          </BottomSheetView>
-        </BottomSheet> */
