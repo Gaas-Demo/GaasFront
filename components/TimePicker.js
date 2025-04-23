@@ -1,6 +1,6 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
-import { Button, DefaultTheme } from 'react-native-paper';
+import { View, StyleSheet } from "react-native";
+import { Button, DefaultTheme, Text } from 'react-native-paper';
 import { TimePickerModal } from 'react-native-paper-dates';
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { Provider as PaperProvider } from 'react-native-paper';
@@ -30,49 +30,52 @@ export default function TimePicker({ onTimeChange }) {
         ...DefaultTheme,
         colors: {
             ...DefaultTheme.colors,
-            primary: 'red',
-            surface: 'white',
-            surfaceVariant: 'ghostwhite',
-            secondaryContainer: 'red',
-            onBackground: 'black'
+            primary: "#DC3545", //clock hand, cancel, ok
+            surface: "white", //background
+            onSurface: "#DC3545", //clock times and not active time container
+            surfaceVariant: "ghostwhite", //background of clock and not active time container
+            onPrimaryContainer: "white", //active time container text and border
+            secondaryContainer: "#DC3545", //active time container
+            onSurfaceVariant: "white", //"Select time" text in top left corner. Same color as background to hide it"
+            onBackground: "#DC3545" //Button to switch input mode
 
         },
     };
 
     return (
-        <SafeAreaProvider>
-            <View style={styles.container}>
-                <Text style={styles.text}>{time.hours}:{time.minutes.toString().padStart(2, '0')}</Text>
-                <Button style={styles.button} onPress={() => setVisible(true)} uppercase={false} mode="outlined">
-                    Pick time
-                </Button>
-                <PaperProvider theme={theme}>
-                    <TimePickerModal
-                        use24HourClock={true}
-                        visible={visible}
-                        onDismiss={onDismiss}
-                        onConfirm={onConfirm}
-                    />
-                </PaperProvider>
-            </View>
-        </SafeAreaProvider>
+        <View style={styles.container}>
+            <Button style={styles.button} onPress={() => setVisible(true)} uppercase={false} mode="contained">
+                Pick time
+            </Button>
+            <Text style={styles.text}>{time.hours}:{time.minutes.toString().padStart(2, '0')}</Text>
+            <PaperProvider theme={theme}>
+                <TimePickerModal
+                    use24HourClock={true}
+                    visible={visible}
+                    onDismiss={onDismiss}
+                    onConfirm={onConfirm}
+                />
+            </PaperProvider>
+        </View>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        flexDirection: "row",
-        justifyContent: "center",
+        minHeight: 80,
         alignItems: "center",
-        margin: 2
+        backgroundColor: "white",
+        marginBottom: 15,
     },
     text: {
         padding: 10,
-        width: 128
+        width: 128,
+        textAlign: "center",
+        fontFamily: "sans-serif-medium"
     },
     button: {
-        width: 160
+        width: 160,
+        backgroundColor: "#DC3545",
     }
 
 })

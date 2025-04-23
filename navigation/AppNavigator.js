@@ -9,6 +9,7 @@ import UserPageTab from '../screens/UserPageTab';
 import FeedbackScreen from '../screens/FeedbackScreen';
 import HistoryScreen from '../screens/HistoryScreen';
 import HistoryEntryScreen from '../screens/HistoryEntryScreen';
+import CalendarScreen from '../screens/Calendar';
 
 const Tab = createBottomTabNavigator();
 
@@ -48,6 +49,15 @@ function BottomTabNavigator() {
                 options={{
                     tabBarIcon: ({ color, size }) => (
                         <Icon source="map-search" size={size} color={color} />
+                    )
+                }}
+            />
+            <Tab.Screen
+                name="Calendar"
+                component={CalendarScreen} 
+                options={{
+                    tabBarIcon: ({ color, size }) => (
+                        <Icon source="calendar" size={size} color={color} />
                     )
                 }}
             />
