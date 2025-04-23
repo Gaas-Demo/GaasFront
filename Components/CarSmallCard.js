@@ -11,7 +11,7 @@ export default function CarSmallCard({item, navigation}) {
 
   return (
     <Card style={styles.cardcontainer}>
-      <Card.Cover source={require('../Testi/auto.png')} 
+      <Card.Cover source={item.photo} 
       style={styles.modelImage}
       resizeMode='contain'
       />

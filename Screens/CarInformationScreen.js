@@ -13,7 +13,7 @@ import { View } from 'react-native'
 export default function CarInformationScreen({ navigation, route }) {
   const { item } = route.params;
   console.log("CarInformationScreen", item)
-  const image = require('../Testi/auto.png')
+  const image = item.photo
   const [modalVisible, setModalVisible] = useState(false)
 
   const toggleModal = () => {
