@@ -108,12 +108,10 @@ export default function Homepage({navigation}) {
       
           <Image source={rentedCar.image} style={styles.carImage} />
           <View style={styles.infoCard}>
-          <Text style={styles.text} variant="bodyLarge">{rentedCar.model}</Text>
-          <Text style={styles.text} variant="bodyLarge">License: {rentedCar.licensePlate}</Text>
-          <Text style={styles.text} variant="bodyLarge">Rental Period: {rentedCar.rentalPeriod}</Text>
-          </View>
-      
-          <View style={styles.metricCard}>
+            <Text style={styles.text} variant="bodyLarge">{rentedCar.model}</Text>
+            <Text style={styles.text} variant="bodyLarge">License: {rentedCar.licensePlate}</Text>
+            <Text style={styles.text} variant="bodyLarge">Rental Period: {rentedCar.rentalPeriod}</Text>
+
             <Text style={styles.fuelLabel}>Fuel Level:</Text>
             <View style={styles.fuelBar}>
               <View style={[styles.fuelFill, { width: "80%" }]} />
@@ -398,6 +396,7 @@ const styles = StyleSheet.create({
     borderRadius: 10, 
   },
   fuelLabel: {
+    marginTop: 20,
     fontSize: 14,
     fontWeight: "600",
     color: "#495057",
