@@ -301,10 +301,12 @@ const styles = StyleSheet.create({
     fontFamily: 'sans-serif-medium',
   },
   headline: {
+    marginTop: 50,
     marginBottom: 20,
     fontWeight: "bold",
     fontSize: 22,
-    color: "#212529",
+    //color: "#212529",
+    color: '#ffffff',
     textAlign: "center",
     fontFamily: 'sans-serif-medium',
     backgroundColor: POPUP_RED,
