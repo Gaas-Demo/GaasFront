@@ -73,6 +73,7 @@ const styles = StyleSheet.create({
         padding: 10,
         width: 128,
         textAlign: "center",
+        fontFamily: "sans-serif-medium",
     },
     button: {
         width: 160,

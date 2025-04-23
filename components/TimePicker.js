@@ -1,6 +1,6 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
-import { Button, DefaultTheme } from 'react-native-paper';
+import { View, StyleSheet } from "react-native";
+import { Button, DefaultTheme, Text } from 'react-native-paper';
 import { TimePickerModal } from 'react-native-paper-dates';
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { Provider as PaperProvider } from 'react-native-paper';
@@ -43,20 +43,20 @@ export default function TimePicker({ onTimeChange }) {
     };
 
     return (
-            <View style={styles.container}>
-                <Button style={styles.button} onPress={() => setVisible(true)} uppercase={false} mode="contained">
-                    Pick time
-                </Button>
-                <Text style={styles.text}>{time.hours}:{time.minutes.toString().padStart(2, '0')}</Text>
-                <PaperProvider theme={theme}>
-                    <TimePickerModal
-                        use24HourClock={true}
-                        visible={visible}
-                        onDismiss={onDismiss}
-                        onConfirm={onConfirm}
-                    />
-                </PaperProvider>
-            </View>
+        <View style={styles.container}>
+            <Button style={styles.button} onPress={() => setVisible(true)} uppercase={false} mode="contained">
+                Pick time
+            </Button>
+            <Text style={styles.text}>{time.hours}:{time.minutes.toString().padStart(2, '0')}</Text>
+            <PaperProvider theme={theme}>
+                <TimePickerModal
+                    use24HourClock={true}
+                    visible={visible}
+                    onDismiss={onDismiss}
+                    onConfirm={onConfirm}
+                />
+            </PaperProvider>
+        </View>
     );
 }
 
@@ -66,13 +66,12 @@ const styles = StyleSheet.create({
         alignItems: "center",
         backgroundColor: "white",
         marginBottom: 15,
-
-        
     },
     text: {
         padding: 10,
         width: 128,
         textAlign: "center",
+        fontFamily: "sans-serif-medium"
     },
     button: {
         width: 160,
