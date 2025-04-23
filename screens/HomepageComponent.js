@@ -267,8 +267,8 @@ const styles = StyleSheet.create({
     width: "100%",
     marginBottom: 20,
     elevation: 2,
-    borderColor: POPUP_RED,        // 🔴 Set the border color
-    borderWidth: 5,                // 🔲 Choose how thick you want it
+    borderColor: POPUP_RED,
+    borderWidth: 5,
     borderRadius: 10, 
   },  
   container: {
@@ -391,8 +391,8 @@ const styles = StyleSheet.create({
     width: "100%",
     alignItems: "center",
     marginBottom: 15,
-    borderColor: POPUP_RED,        // 🔴 Set the border color
-    borderWidth: 5,                // 🔲 Choose how thick you want it
+    borderColor: POPUP_RED,
+    borderWidth: 5,
     borderRadius: 10, 
   },
   fuelLabel: {
@@ -443,8 +443,8 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 4,
-    borderColor: POPUP_RED,        // 🔴 Set the border color
-    borderWidth: 5,                // 🔲 Choose how thick you want it
+    borderColor: POPUP_RED,
+    borderWidth: 5,
     borderRadius: 10, 
   },
   userBubble: {
