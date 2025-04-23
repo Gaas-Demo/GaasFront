@@ -20,5 +20,6 @@ const styles = StyleSheet.create({
   modelImage2: {
     borderTopLeftRadius: 0,
     borderBottomLeftRadius: 0,
+    
 }
 })

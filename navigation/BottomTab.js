@@ -71,6 +71,7 @@ const styles = StyleSheet.create({
 });
 
 const headerOptions = {
+    
     headerStyle: styles.header,
     headerTintColor: "#fff",
     headerTitleStyle: styles.headerTitle,
