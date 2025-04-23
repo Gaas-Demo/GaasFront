@@ -145,10 +145,15 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     elevation: 5,
     padding: 10,
+    borderTopLeftRadius: 5,
+    borderBottomLeftRadius: 5,
+    borderColor: "#cc0000", 
+    borderLeftWidth:5,
   },
   cardTitle: {
     fontSize: 18,
     fontWeight: "bold",
+    fontFamily: 'sans-serif-medium',
   },
   cardActionsContainer:{
     //flexDirection: "row",
@@ -168,6 +173,7 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 16,
     fontWeight: "bold",
+    fontFamily: 'sans-serif-medium'
   },
   showGarageButton: {
     width: "35%",
@@ -181,6 +187,7 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 16,
     fontWeight: "bold",
+    fontFamily: 'sans-serif-medium'
   },
   directionsButton: {
     width: "35%",
@@ -193,17 +200,14 @@ const styles = StyleSheet.create({
     textDecorationLine: 'underline',
     fontSize: 16,
     marginRight: 4,
+    fontFamily: 'sans-serif-medium'
+  },
+  infoText: {
+    fontSize: 14,
+    marginRight: 4,
+    fontFamily: 'sans-serif-medium'
   },
 });
 
 
-/*
-<BottomSheet
-          ref={bottomSheetRef} // Ensure useRef is being used properly
-          index={-1} // Keeps it hidden initially
-          snapPoints={["25%", "50%"]} // Set snap points as per your needs
-        >
-          <BottomSheetView style={styles.contentContainer}>
-            <Text>Awesome 🎉</Text>
-          </BottomSheetView>
-        </BottomSheet> */
+
