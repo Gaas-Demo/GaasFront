@@ -12,19 +12,19 @@ const image2 = require('../Testi/testi2.jpg')
     return (
         <ScrollView>
             <View style={styles.container}>
-                <Card mode='elevated' elevation={5} style={styles.cardContainer}>
+                <Card>
                     <CarMotor item={item}/>
                 </Card>
 
-                <Card style={styles.cardContainer}>
+                <Card>
                     <CarTechnology />
                 </Card>
 
-                <Card style={styles.cardContainer}>
+                <Card>
                     <CarImage image={image2}/>
                 </Card>
 
-                <Card style={styles.cardContainer}>
+                <Card>
                     <CarTechnology />
                 </Card>
             </View>
@@ -36,14 +36,14 @@ const image2 = require('../Testi/testi2.jpg')
 function CarMotor({item}) {
     return (
         <View style={styles.infoContainer}>
-            <Text>{item.model} {item.Type} {item.year} {item.color}</Text>
-            <Text>Moottoritilavuus (l): 2,9</Text>
-            <Text>Automaattivaihteisto:
+            <Text style={styles.text}>{item.model} {item.Type} {item.year} {item.color}</Text>
+            <Text style={styles.text}>Moottoritilavuus (l): 2,9</Text>
+            <Text style={styles.text}>Automaattivaihteisto:
                 8-vaihteinen Porsche Doppelkupplung (PDK)</Text>
-            <Text>Vetotapa: Takaveto</Text>
-            <Text>Kiihtyvyys (0-100 km/h, s): 5,3</Text>
-            <Text>CO2-päästöt (g/km): 219</Text>
-            <Text>Kulutus (l/100km): 9,6</Text>
+            <Text style={styles.text}>Vetotapa: Takaveto</Text>
+            <Text style={styles.text}>Kiihtyvyys (0-100 km/h, s): 5,3</Text>
+            <Text style={styles.text}>CO2-päästöt (g/km): 219</Text>
+            <Text style={styles.text}>Kulutus (l/100km): 9,6</Text>
         </View>
     );
 }
@@ -51,7 +51,7 @@ function CarMotor({item}) {
 function CarTechnology() {
     return (
         <View style={styles.infoContainer}>
-            <Text>Power Steering Plus -ohjaustehostin
+            <Text style={styles.text}>Power Steering Plus -ohjaustehostin
                 ParkAssist (edessä ja takana) sis. peruutuskameran
                 Smart Lift -säätö maavaran korkeudelle
                 Ulkopeilien himmennysautomatiikka
@@ -75,19 +75,25 @@ function CarSafety() {
     );
 }
 const styles = StyleSheet.create({
+
     container: {
         paddingVertical: 20,
+        paddingHorizontal: 10,
+    },
+    text:{
+        fontFamily: 'sans-serif-medium'
     },
     cardContainer: {
         marginVertical: 7,
         borderTopLeftRadius: 5,
         borderBottomLeftRadius: 5,
-        borderColor: "#cc0000", 
+      
         borderLeftWidth:5,
     },
     infoContainer: {
         marginVertical: 5,
         padding: 10,
         paddingRight: 15,
+        
     },
 })

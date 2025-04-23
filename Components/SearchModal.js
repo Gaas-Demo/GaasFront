@@ -37,15 +37,14 @@ const SearchModal = ({ visible, toggleModal, Search, data }) => {
 
     }
 
-   const handleFilter = (filter) => {
+    const handleFilter = (filter) => {
         console.log("filter", filter)
-       SetSelected((prevselected) => {
-        if(prevselected.includes(filter))
-        {
-            return prevselected.filter((item) => item !== filter)
-        }
-        return [...prevselected, filter]
-       })
+        SetSelected((prevselected) => {
+            if (prevselected.includes(filter)) {
+                return prevselected.filter((item) => item !== filter)
+            }
+            return [...prevselected, filter]
+        })
     }
     const isSelected = (filter) => selected.includes(filter)
 
@@ -59,6 +58,8 @@ const SearchModal = ({ visible, toggleModal, Search, data }) => {
             <View style={styles.modalOverlay}>
                 <View style={styles.modalContainer}>
                     <TextInput
+                    theme={{colors:{primary:'#DC3545'}}}
+                        mode='outlined'
                         label="Search"
                         value={text}
                         onChangeText={text => setText(text)}
@@ -67,21 +68,45 @@ const SearchModal = ({ visible, toggleModal, Search, data }) => {
                             //   toggleModal()
                         }}
                     />
-                    <Button mode={isSelected('child') ? 'contained' : 'outlined'}
-                    onPress={() => handleFilter('child')
+                    <Button theme={{
+                        colors: {
+                            primary: '#DC3545',
+                            onPrimary: 'white',
+                            outline: '#DC3545',
+                            surfaceVariant: '#DC3545',
+                            onSurfaceVariant: '#DC3545',
+                        },
+                    }} mode={isSelected('child') ? 'contained' : 'outlined'}
+                        onPress={() => handleFilter('child')
+                        }>
+                        Child
+                    </Button>
+                    <Button theme={{
+                        colors: {
+                            primary: '#DC3545',
+                            onPrimary: 'white',
+                            outline: '#DC3545',
+                            surfaceVariant: '#DC3545',
+                            onSurfaceVariant: '#DC3545',
+                        },
+                    }}mode={isSelected('roof') ? 'contained' : 'outlined'} onPress={() => handleFilter('roof')
                     }>
-                    Child
-                </Button>
-                <Button mode={isSelected('roof') ? 'contained' : 'outlined'} onPress={() => handleFilter('roof')
+                        Roof Rails
+                    </Button>
+                    <Button theme={{
+                        colors: {
+                            primary: '#DC3545',
+                            onPrimary: 'white',
+                            outline: '#DC3545',
+                            surfaceVariant: '#DC3545',
+                            onSurfaceVariant: '#DC3545',
+                        },
+                    }} mode={isSelected('animal') ? 'contained' : 'outlined'} onPress={() => handleFilter('animal')
                     }>
-                    Roof Rails
-                </Button>
-                <Button mode={isSelected('animal') ? 'contained' : 'outlined'} onPress={() => handleFilter('animal')
-                    }>
-                    Animal
-                </Button>
+                        Animal
+                    </Button>
+                </View>
             </View>
-        </View>
         </Modal >
     );
 };
@@ -101,6 +126,12 @@ const styles = StyleSheet.create({
         height: 500,
         //  justifyContent: 'center',
         //  alignItems: 'center',
+    },
+    button: {
+        fontFamily: 'sans-serif-medium',
+        // borderColor:'#DC3545',
+        //buttonColor:'#DC3545',
+        // backgroundColor:'#DC3545'
     },
 });
 
