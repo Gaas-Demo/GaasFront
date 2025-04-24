@@ -32,7 +32,6 @@ export default function CarInformationScreen({ navigation, route }) {
     <SafeAreaProvider>
       <SafeAreaView style={styles.container}>
         <ScrollView scrollEnabled={!modalVisible}>
-          <CarImage image={image} />
           <CarInfo item={item} />
           <Button style={styles.Button} labelStyle={{color : 'white'}} mode='outlined' onPress={toggleModal}>Lease Car</Button>
         </ScrollView>
