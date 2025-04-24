@@ -50,9 +50,9 @@ const CarLeaseModal = ({ visible, toggleModal, item }) => {
           <CarAccessory />
           <DatePicker onDateChange={setSelectedDate} />
           <TimePicker onTimeChange={setSelectedTime} />
-          <Button labelStyle={{color:'white'}}style={styles.Button} mode='outlined' onPress={toggleModal}>CLOSE</Button>
-          <Button onPress={Reserve}>Rent later</Button>
-          <Button onPress={Accept}>Rent now</Button>
+          <Button labelStyle={{ color: 'white' }} style={styles.Button} mode='outlined' onPress={toggleModal}>Close</Button>
+          <Button labelStyle={{ color: 'white' }} style={styles.Button} mode='outlined' onPress={Reserve}>Lease later</Button>
+          <Button labelStyle={{ color: 'white' }} style={styles.Button} mode='outlined' onPress={Accept}>Lease now</Button>
         </View>
       </View>
 
@@ -76,11 +76,15 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignItems: 'center',
   },
-  Button:{
-    backgroundColor:'#DC3545',
-    borderColor:'#DC3545',
-    textDecorationColor:'white',
+  Button: {
+    width: "95%",
+    marginTop: 15,
+    paddingVertical: 7,
+    backgroundColor: "#DC3545",
+    borderRadius: 8,
+    alignItems: "center",
+    textDecorationColor: 'white',
   }
-});
+  });
 
 export default CarLeaseModal;

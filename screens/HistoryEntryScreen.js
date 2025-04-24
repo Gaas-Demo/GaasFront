@@ -1,113 +1,104 @@
 import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
 import { Text, TextInput, Button, Card, Avatar } from 'react-native-paper';
-import { Image, StyleSheet, View } from 'react-native';
+import { Image, ScrollView, StyleSheet, View } from 'react-native';
 
 export default function HistoryEntryScreen({ route, navigation }) {
     const { item } = route.params;
 
     return (
         <SafeAreaProvider>
-            <SafeAreaView style={{ flex: 1 }}>
-                <CarDetailsSimple item={item} />
-                <Button style={styles.button} mode="contained" onPress={() => navigation.navigate('CarInformationScreen', { item })}>Car Details</Button>
-                <Button style={styles.button} mode="contained" onPress={() => navigation.navigate('FeedbackScreen')}>Give Feedback</Button>
+            <SafeAreaView style={styles.container}>
+                <View style={{ width: '100%', margin: 4 }}>
+                    <Text style={{ fontFamily: 'sans-serif-medium', fontSize: 20 }}>{item.brandName}</Text>
+                    <Text style={{ fontFamily: 'sans-serif-medium', fontSize: 28, fontWeight: 'bold' }}>{item.modelName}</Text>
+                </View>
+                <ScrollView contentContainerStyle={{ margin: 4, gap: 4, minHeight: '100%' }} >
+
+                    <View style={styles.carImageContainer}>
+                        <Image style={styles.carImage} source={require('../Testi/auto.png')} />
+                    </View>
+                    <View style={{ width: '100%', borderRadius: 10, borderWidth: 4, borderColor: '#DC3545', padding: 4, gap: 4 }}>
+                        <InfoContainerHeader title={'Contract'} />
+                        <InfoContainerDetail title={'Garage'} content={item.garage ?? '-'} />
+                        <InfoContainerDetail title={'Extra Services'} content={item.extras ?? '-'} />
+                        <InfoContainerDetail title={'Start Date'} content={item.dateStart ?? '-'} />
+                        <InfoContainerDetail title={'End Date'} content={item.dateEnd ?? '-'} />
+                    </View>
+                    <View style={{ flex: 1, gap: 4, marginTop: 16, marginBottom: 100 }}>
+                        <Button style={styles.button} mode="contained" onPress={() => navigation.navigate('CarInformationScreen', { item })}>Car Details</Button>
+                        <Button style={styles.button} mode="contained" onPress={() => navigation.navigate('FeedbackScreen')}>Feedback</Button>
+                    </View>
+                </ScrollView>
             </SafeAreaView>
         </SafeAreaProvider>
     )
 }
 
-function CarDetailsSimple({ item }) {
-    console.log(item);
-
+function InfoContainerHeader({ title }) {
     return (
-        <SafeAreaProvider>
-            <SafeAreaView style={{ flex: 1 }}>
-                <SafeAreaView style={styles.carImageContainer}>
-                    <Image style={styles.carImage} source={require('../Testi/auto.png')} />
-                </SafeAreaView>
-                <SafeAreaView style={styles.detailsContainer}>
-                    <Text style={styles.detailsContainerTitle}>Car</Text>
-                    <Text style={styles.detailsContainerHeader}>Brand</Text>
-                    <Text style={styles.detailsText}>{item.brandName}</Text>
-                    <Text style={styles.detailsContainerHeader}>Model</Text>
-                    <Text style={styles.detailsText}>{item.modelName}</Text>
-                </SafeAreaView>
-                <SafeAreaView style={styles.detailsContainer}>
-                    <Text style={styles.detailsContainerTitle}>Contract</Text>
-                    <Text style={styles.detailsContainerHeader}>Start Date</Text>
-                    <Text style={styles.detailsText}>{item.dateStart}</Text>
-                    <Text style={styles.detailsContainerHeader}>End Date</Text>
-                    <Text style={styles.detailsText}>{item.dateEnd}</Text>
-                </SafeAreaView>
-            </SafeAreaView>
-        </SafeAreaProvider>
+        <View style={styles.infoContainerHeader}>
+            <Text style={styles.infoContainerTitle}>{title}</Text>
+            <View style={styles.line} />
+        </View>
+    )
+}
+
+function InfoContainerDetail({ title, content }) {
+    return (
+        <View style={styles.infoContainerDetail}>
+            <Text style={styles.infoContainerDetailTitle}>{title}</Text>
+            <Text style={styles.infoContainerDetailText}>{content}</Text>
+        </View>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: 20,
-    },
-    headline: {
-        marginBottom: 20,
-        fontWeight: 'bold',
-    },
-    text: {
-        marginBottom: 20,
-    },
-    input: {
-        width: '100%',
-        marginBottom: 20,
-    },
-    button: {
-        marginBottom: 10,
-        width: '100%',
-    },
-    cardcontainer: {
-        backgroundColor: 'white',
-        height: "calc(100% - 8px)",
+
     },
     carImageContainer: {
-        height: "50%",
-        margin: 8,
+        width: '100%',
+        aspectRatio: 1,
         borderRadius: 10,
-        padding: 4,
-        backgroundColor: '#dddddd'
-    },
-    detailsContainer: {
-        backgroundColor: '#dddddd',
-        margin: 4,
-        borderRadius: 10,
-        padding: 4
+        borderWidth: 4,
+        borderColor: '#DC3545',
+        overflow: 'hidden',
+        gap: 4
     },
     carImage: {
-        width: 'auto',
-        height: "auto",
-        aspectRatio: 1,
-        resizeMode: 'contain'
+        flex: 1,
+        width: '100%',
+        resizeMode: 'contain',
+        backgroundColor: '#ddd'
     },
-    detailsText: {
-        backgroundColor: '#eeeeee',
-        margin: 4,
-        marginBottom: 0,
-        padding: 4,
-        borderRadius: 10
+    infoContainerHeader: {
+
     },
-    detailsContainerTitle: {
-        fontWeight: "bold",
-        fontSize: 20,
-        margin: 4,
-        marginBottom: 8,
-        padding: 4,
+    infoContainerDetail: {
+
     },
-    detailsContainerHeader: {
-        fontWeight: "bold",
-        margin: 4,
-        marginBottom: 0,
-        padding: 4,
-    }
+    infoContainerTitle: {
+        fontFamily: 'sans-serif-medium',
+        fontSize: 24,
+        fontWeight: '500'
+    },
+    infoContainerDetailTitle: {
+        fontFamily: 'sans-serif-medium',
+        fontWeight: '100',
+        fontSize: 16
+    },
+    infoContainerDetailText: {
+        fontFamily: 'sans-serif-medium',
+        fontSize: 14
+    },
+    line: {
+        marginTop: 4,
+        marginBottom: 4,
+        borderBottomColor: 'black',
+        borderBottomWidth: StyleSheet.hairlineWidth
+    },
+    button: {
+        width: '100%',
+        backgroundColor: '#DC3545'
+    },
 });

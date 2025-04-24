@@ -9,6 +9,7 @@ import UserPageTab from '../screens/UserPageTab';
 import FeedbackScreen from '../screens/FeedbackScreen';
 import HistoryScreen from '../screens/HistoryScreen';
 import HistoryEntryScreen from '../screens/HistoryEntryScreen';
+import Settings from '../screens/Settings';
 import CalendarScreen from '../screens/Calendar';
 
 const Tab = createBottomTabNavigator();
@@ -103,6 +104,10 @@ function AppNavigator() {
             <Stack.Screen
                 name="HistoryEntryScreen"
                 component={HistoryEntryScreen}
+            />
+            <Stack.Screen
+                name="Settings"
+                component={Settings}
             />
         </Stack.Navigator>
     )

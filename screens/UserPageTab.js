@@ -21,18 +21,14 @@ export default function UserPageTab({ navigation }) {
         ssn: "01011990AAAAA"
     });
 
-
-
     return (
         <SafeAreaProvider>
             <SafeAreaView style={{ flex: 1 }}>
-                <Button style={styles.button} mode="contained">User Settings</Button>
-                <Button style={styles.button} mode="contained" onPress={() => navigation.navigate('HistoryScreen')} >Vehicle History</Button>
 
-
-
-
-
+                <View style={{ flex: 1, justifyContent: 'flex-end', }}>
+                    <Button style={styles.button} mode="contained" onPress={() => navigation.navigate('Settings')}>User Settings</Button>
+                    <Button style={styles.button} mode="contained" onPress={() => navigation.navigate('HistoryScreen')}>Contract History</Button>
+                </View>
             </SafeAreaView>
         </SafeAreaProvider>
     )
@@ -98,6 +94,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     text: {
+        fontFamily: 'sans-serif-medium',
         marginBottom: 20,
     },
     input: {
@@ -107,6 +104,7 @@ const styles = StyleSheet.create({
     button: {
         marginBottom: 10,
         width: '100%',
+        backgroundColor: '#DC3545'
     },
     cardcontainer: {
         backgroundColor: 'white',
