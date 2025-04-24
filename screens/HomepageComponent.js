@@ -106,7 +106,7 @@ export default function Homepage({navigation}) {
             Current Contract
           </Text>
       
-          <Image source={rentedCar.image} style={styles.carImage} />
+          <Image source={rentedCar2.photo} style={styles.carImage} />
           <View style={styles.infoCard}>
             <Text style={styles.text} variant="bodyLarge">{rentedCar.model}</Text>
             <Text style={styles.text} variant="bodyLarge">License: {rentedCar.licensePlate}</Text>
