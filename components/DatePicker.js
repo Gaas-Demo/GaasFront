@@ -48,6 +48,7 @@ export default function DatePicker({ onDateChange }) {
                     mode="single"
                     visible={open}
                     presentationStyle="pageSheet"
+                    startWeekOnMonday={true}
                     onDismiss={onDismissSingle}
                     date={date}
                     onConfirm={onConfirmSingle}
