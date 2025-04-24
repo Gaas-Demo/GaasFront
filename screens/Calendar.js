@@ -45,8 +45,8 @@ const CalendarScreen = () => {
                     </View>
                 )}
                 pastScrollRange={1}
-
-                futureScrollRange={1}
+                futureScrollRange={2}      
+                firstDay={1}
                 showClosingKnob={true}
                 calendarStyle={{
 
