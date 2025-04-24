@@ -7,6 +7,7 @@ const  GarageCarSearch = ({onPress, modalVisible}) => {
 
   return (
       <FAB
+        color='#DC3545'
         icon={modalVisible ? 'close' : 'magnify'}
         size='large'
         mode='elevated'

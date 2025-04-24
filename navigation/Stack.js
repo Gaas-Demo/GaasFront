@@ -11,9 +11,10 @@ const Stack = createNativeStackNavigator();
 function StackScreen1({initialRoute}) {
 
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="GarageScreen" component={GarageScreen} />
-      <Stack.Screen name="CarInformationScreen" component={CarInformationScreen} />
+    <Stack.Navigator >
+      <Stack.Screen name="GarageScreen" component={GarageScreen}  />
+      <Stack.Screen name="Carscreen" component={CarInformationScreen}
+          />
     </Stack.Navigator>
   )
 }

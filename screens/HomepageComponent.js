@@ -12,9 +12,13 @@ export default function Homepage({navigation}) {
   const [modalVisible, setModalVisible] = useState(false);
   const [VehicleCallmodalVisible, VehicleCallsetModalVisible] = useState(false);
   const [endContractModalVisible, setEndContractModalVisible] = useState(false);
-  const [message, setMessage] = useState("");
   const [showCar, setShowCar] = useState(false);
+  const [message, setMessage] = useState("");
+  const [messages, setMessages] = useState([
+    { id: 1, text: "Hi! How can I assist you today?", from: "support" },
+  ]);  
   const [distanceDriven, setDistanceDriven] = useState(32.4);
+
 
 
   useEffect(() => {
@@ -61,7 +65,27 @@ export default function Homepage({navigation}) {
   };
 
   const sendMessage = () => {
+    if (message.trim() === "") return;
+
+    const newMessage = {
+      id: Date.now(),
+      text: message,
+      from: "You",
+    };
+
+    setMessages(prevMessages => [...prevMessages, newMessage]);
     setMessage("");
+
+    setTimeout(() => {
+      setMessages(prev => [
+        ...prev,
+        {
+          id: Date.now() + 1,
+          text: "Thanks! We'll get back to you shortly.",
+          from: "support",
+        },
+      ]);
+    }, 1000);
   };
 
   if (loading) {
@@ -102,11 +126,6 @@ export default function Homepage({navigation}) {
             </View>
           </View>
 
-      
-          <Button style={styles.buttonAskHelp} mode="contained" onPress={openChatModal}>
-            Ask Help
-          </Button>
-
           <Button style={styles.button} mode="contained" onPress={openVehicleCallModal}>
             Call your vehicle
           </Button>
@@ -144,6 +163,12 @@ export default function Homepage({navigation}) {
           <Button style={styles.button} mode="contained" onPress={openEndContractModal}>
             End Contract
           </Button>
+
+              
+          <Button style={styles.button} mode="contained" onPress={openChatModal}>
+            Ask Help
+          </Button>
+
         </>
       ) : (
         <>
@@ -169,9 +194,17 @@ export default function Homepage({navigation}) {
           <View style={styles.chatWindow}>
             <Text style={styles.chatHeader}>Customer Support</Text>
             <ScrollView style={styles.messagesContainer}>
-              <View style={styles.messageBubble}>
-                <Text style={styles.messageText}>Hi! How can I assist you today?</Text>
-              </View>
+              {messages.map((msg) => (
+                <View
+                  key={msg.id}
+                  style={[
+                    styles.messageBubble,
+                    msg.from === "user" ? styles.userBubble : styles.supportBubble,
+                  ]}
+                >
+                  <Text style={styles.messageText}>{msg.text}</Text>
+                </View>
+              ))}
             </ScrollView>
             <View style={styles.inputContainer}>
               <TextInput
@@ -203,7 +236,7 @@ export default function Homepage({navigation}) {
             <Text style={styles.messageText}>Are you sure you want to end this contract?</Text>
             
             <View style={{ flexDirection: "row", justifyContent: "space-between", marginTop: 20 }}>
-              <TouchableOpacity style={[styles.button, { backgroundColor: "#dc3545", flex: 1, marginRight: 10 }]} onPress={handleEndContract}>
+              <TouchableOpacity style={[styles.button, { backgroundColor: "#000000", flex: 1, marginRight: 10 }]} onPress={handleEndContract}>
                 <Text style={{ color: "#fff", textAlign: "center" }}>Yes, terminate my current contract</Text>
               </TouchableOpacity>
               <TouchableOpacity style={[styles.button, { backgroundColor: "#6c757d", flex: 1 }]} onPress={closeEndContractModal}>
@@ -217,6 +250,8 @@ export default function Homepage({navigation}) {
   </ScrollView>
   );
 };
+
+const POPUP_RED = "#DC3545";
 
 const styles = StyleSheet.create({
   scrollContainer: {
@@ -232,11 +267,15 @@ const styles = StyleSheet.create({
     width: "100%",
     marginBottom: 20,
     elevation: 2,
+    borderColor: POPUP_RED,
+    borderWidth: 5,
+    borderRadius: 10, 
   },  
   container: {
     flex: 1,
     justifyContent: "flex-start",
     alignItems: "center",
+    padding: 10,
     padding: 10,
     backgroundColor: "#f8f9fa",
   },
@@ -258,7 +297,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   sectionTitle: {
-    fontSize: 22
+    fontSize: 22,
+    fontFamily: 'sans-serif-medium',
   },
   headline: {
     marginBottom: 20,
@@ -266,9 +306,14 @@ const styles = StyleSheet.create({
     fontSize: 22,
     color: "#212529",
     textAlign: "center",
+    fontFamily: 'sans-serif-medium',
+    backgroundColor: POPUP_RED,
+    padding: 15,
+    borderRadius: 8,
   },  
   text: {
     marginBottom: 20,
+    fontFamily: 'sans-serif-medium',
   },
   carImage: {
     width: "100%",
@@ -280,8 +325,17 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 6,
     elevation: 4,
+    borderColor: POPUP_RED,
+    borderWidth: 5,
+    borderRadius: 10, 
   },  
   button: {
+    width: "95%",
+    marginTop: 15,
+    paddingVertical: 7,
+    backgroundColor: "#DC3545",
+    borderRadius: 8,
+    alignItems: "center",
     width: "95%",
     marginTop: 15,
     paddingVertical: 7,
@@ -297,7 +351,7 @@ const styles = StyleSheet.create({
   },
   chatWindow: {
     width: "90%",
-    backgroundColor: "#fff",
+    backgroundColor: POPUP_RED,
     padding: 20,
     borderRadius: 20,
     minHeight: 300,
@@ -307,6 +361,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginBottom: 10,
     color: "#333",
+    fontFamily: 'sans-serif-medium',
   },
   messagesContainer: {
     maxHeight: 200,
@@ -330,23 +385,29 @@ const styles = StyleSheet.create({
     marginRight: 10,
     fontSize: 16,
     minHeight: 40,
+    fontFamily: 'sans-serif-medium',
   },
   fuelContainer: {
     width: "100%",
     alignItems: "center",
     marginBottom: 15,
+    borderColor: POPUP_RED,
+    borderWidth: 5,
+    borderRadius: 10, 
   },
   fuelLabel: {
     fontSize: 14,
     fontWeight: "600",
     color: "#495057",
     marginBottom: 5,
+    fontFamily: 'sans-serif-medium',
   },
   fuelPercentage: {
     fontSize: 16,
     fontWeight: "bold",
     color: "#28a745",
     marginTop: 5,
+    fontFamily: 'sans-serif-medium',
   },
   fuelBar: {
     width: "100%",
@@ -369,6 +430,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "bold",
     color: "#333",
+    fontFamily: 'sans-serif-medium',
   },
   metricCard: {
     width: "100%",
@@ -381,6 +443,34 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 4,
+    borderColor: POPUP_RED,
+    borderWidth: 5,
+    borderRadius: 10, 
   },
+  userBubble: {
+    alignSelf: "flex-end",
+    backgroundColor: "#007BFF",
+    borderTopRightRadius: 0,
+    borderTopLeftRadius: 15,
+    borderBottomRightRadius: 15,
+    borderBottomLeftRadius: 15,
+    padding: 10,
+    marginBottom: 10,
+    maxWidth: "75%",
+    fontFamily: 'sans-serif-medium',
+  },
+  supportBubble: {
+    alignSelf: "flex-start",
+    backgroundColor: "#e9ecef",
+    borderTopLeftRadius: 0,
+    borderTopRightRadius: 15,
+    borderBottomRightRadius: 15,
+    borderBottomLeftRadius: 15,
+    padding: 10,
+    marginBottom: 10,
+    maxWidth: "75%",
+    fontFamily: 'sans-serif-medium',
+  },
+  
   
 });

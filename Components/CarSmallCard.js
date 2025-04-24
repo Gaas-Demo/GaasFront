@@ -11,15 +11,22 @@ export default function CarSmallCard({item, navigation}) {
 
   return (
     <Card style={styles.cardcontainer}>
-      <Card.Cover source={require('../Testi/auto.png')} 
+      <Card.Cover source={item.photo} 
       style={styles.modelImage}
       resizeMode='contain'
       />
-      <Card.Title 
+      <Card.Title
+       
       title={item.model}
       subtitleNumberOfLines={3}
       subtitle={item.year}
-      right={(props) => <IconButton {...props}backgroundColor="#fff2f2" icon="chevron-right" onPress={()=> navigation.navigate('CarInformationScreen',{item})} />}
+      titleStyle={{
+        fontFamily: 'sans-serif-medium'
+      }}
+      subtitleStyle={{
+        fontFamily: 'sans-serif-medium'
+      }}
+      right={(props) => <IconButton {...props}backgroundColor="#fff2f2" icon="chevron-right" iconColor='#DC3545' onPress={()=> navigation.navigate('CarInformationScreen',{item})} />}
       />
     </Card>
 
