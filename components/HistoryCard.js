@@ -6,7 +6,7 @@ export default function HistoryCard({ item, navigation }) {
         <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('HistoryEntryScreen', { item })}>
             <SafeAreaView style={styles.topContainer}>
                 <SafeAreaView style={styles.topContainerLeft}>
-                    <Image style={styles.image} source={require('../Testi/auto.png')} />
+                    <Image style={styles.image} source={item.photo} />
                 </SafeAreaView>
                 <SafeAreaView style={styles.topContainerRight}>
                     <Text style={styles.text}>NEW</Text>
@@ -15,7 +15,7 @@ export default function HistoryCard({ item, navigation }) {
             <SafeAreaView style={styles.line} />
             <SafeAreaView style={styles.bottomContainer}>
                 <Text variant="titleSmall" style={styles.text}>{item.brandName ?? "???"}</Text>
-                <Text variant="titleMedium" style={styles.text}>{item.modelName ?? "???"}</Text>
+                <Text variant="titleMedium" style={styles.text}>{item.Type ?? "???"}</Text>
                 <Text variant="labelSmall" style={styles.text}>{item.extras ?? "-"}</Text>
                 <Text variant="bodyMedium" style={styles.text}>{item.dateStart} - {item.dateEnd}</Text>
             </SafeAreaView>
