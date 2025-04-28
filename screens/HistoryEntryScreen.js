@@ -4,27 +4,28 @@ import { Image, ScrollView, StyleSheet, View } from 'react-native';
 
 export default function HistoryEntryScreen({ route, navigation }) {
     const { item } = route.params;
+    console.log("history entry:", item)
 
     return (
         <SafeAreaProvider>
             <SafeAreaView style={styles.container}>
                 <View style={{ width: '100%', margin: 4 }}>
                     <Text style={{ fontFamily: 'sans-serif-medium', fontSize: 20 }}>{item.brandName}</Text>
-                    <Text style={{ fontFamily: 'sans-serif-medium', fontSize: 28, fontWeight: 'bold' }}>{item.modelName}</Text>
+                    <Text style={{ fontFamily: 'sans-serif-medium', fontSize: 28, fontWeight: 'bold' }}>{item.Type}</Text>
                 </View>
                 <ScrollView contentContainerStyle={{ margin: 4, gap: 4, minHeight: '100%' }} >
 
-                    <View style={styles.carImageContainer}>
-                        <Image style={styles.carImage} source={require('../Testi/auto.png')} />
+                    <View style={styles.carImageContainer} key={1}>
+                        <Image style={styles.carImage} source={item.photo} />
                     </View>
-                    <View style={{ width: '100%', borderRadius: 10, borderWidth: 4, borderColor: '#DC3545', padding: 4, gap: 4 }}>
+                    <View style={{ width: '100%', borderRadius: 10, borderWidth: 4, borderColor: '#DC3545', padding: 4, gap: 4 }} key={2}>
                         <InfoContainerHeader title={'Contract'} />
                         <InfoContainerDetail title={'Garage'} content={item.garage ?? '-'} />
                         <InfoContainerDetail title={'Extra Services'} content={item.extras ?? '-'} />
                         <InfoContainerDetail title={'Start Date'} content={item.dateStart ?? '-'} />
                         <InfoContainerDetail title={'End Date'} content={item.dateEnd ?? '-'} />
                     </View>
-                    <View style={{ flex: 1, gap: 4, marginTop: 16, marginBottom: 100 }}>
+                    <View style={{ flex: 1, gap: 4, marginTop: 16, marginBottom: 100 }} key={3}>
                         <Button style={styles.button} mode="contained" onPress={() => navigation.navigate('CarInformationScreen', { item })}>Car Details</Button>
                         <Button style={styles.button} mode="contained" onPress={() => navigation.navigate('FeedbackScreen')}>Feedback</Button>
                     </View>

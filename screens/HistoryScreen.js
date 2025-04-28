@@ -1,7 +1,8 @@
 import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
-import { View,  FlatList, ScrollView, StyleSheet } from 'react-native'
+import { View, FlatList, ScrollView, StyleSheet } from 'react-native'
 import HistoryCard from '../components/HistoryCard';
 import { useState } from 'react';
+import carsData from '../Testi/testi'
 
 export default function HistoryScreen({ navigation }) {
 
@@ -11,88 +12,30 @@ export default function HistoryScreen({ navigation }) {
         {
             id: 1,
             brandName: "Porsche",
-            modelName: "Model 1",
+            Type: carsData[0].Type,
             dateStart: "2025-01-01",
-            dateEnd: "2025-12-31"
+            dateEnd: "2025-12-31",
+            photo: carsData[0].photo
         },
         {
             id: 2,
             brandName: "Porsche",
-            modelName: "Model 2",
+            Type: carsData[1].Type,
             dateStart: "2025-01-01",
-            dateEnd: "2025-12-31"
+            dateEnd: "2025-12-31",
+            photo: carsData[1].photo
         },
         {
             id: 3,
             brandName: "Porsche",
-            modelName: "Model 3",
+            Type: carsData[2].Type,
             dateStart: "2025-01-01",
-            dateEnd: "2025-12-31"
-        },
-        {
-            id: 4,
-            brandName: "Porsche",
-            modelName: "Model 4",
-            dateStart: "2025-01-01",
-            dateEnd: "2025-12-31"
-        },
-        {
-            id: 5,
-            brandName: "Porsche",
-            modelName: "Model 3",
-            dateStart: "2025-01-01",
-            dateEnd: "2025-12-31"
-        },
-        {
-            id: 6,
-            brandName: "Porsche",
-            modelName: "Model 4",
-            dateStart: "2025-01-01",
-            dateEnd: "2025-12-31"
-        },
-        {
-            id: 7,
-            brandName: "Porsche",
-            modelName: "Model 3",
-            dateStart: "2025-01-01",
-            dateEnd: "2025-12-31"
-        },
-        {
-            id: 8,
-            brandName: "Porsche",
-            modelName: "Model 4",
-            dateStart: "2025-01-01",
-            dateEnd: "2025-12-31"
-        },
-        {
-            id: 9,
-            brandName: "Porsche",
-            modelName: "Model 3",
-            dateStart: "2025-01-01",
-            dateEnd: "2025-12-31"
-        },
-        {
-            id: 10,
-            brandName: "Porsche",
-            modelName: "Model 4",
-            dateStart: "2025-01-01",
-            dateEnd: "2025-12-31"
-        },
-        {
-            id: 11,
-            brandName: "Porsche",
-            modelName: "Model 3",
-            dateStart: "2025-01-01",
-            dateEnd: "2025-12-31"
-        },
-        {
-            id: 12,
-            brandName: "Porsche",
-            modelName: "Model 4",
-            dateStart: "2025-01-01",
-            dateEnd: "2025-12-31"
+            dateEnd: "2025-12-31",
+            photo: carsData[2].photo
         }
     ]);
+
+    console.log(historyData)
 
     return (
         <SafeAreaProvider>
